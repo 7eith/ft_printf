@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/16 22:26:05 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/02 15:08:38 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,8 +16,11 @@ NAME		=		libftprintf.a
 HEADERS		=		includes/
 
 SRCS 		=		srcs/ft_printf.c	\
+					srcs/checker.c		\
+					srcs/parser.c		\
+					srcs/ft_strreplace.c\
 
-FLAGS 		= 		-Wall -Wextra -Werror
+FLAGS 		= 		-Wall -Wextra -Werror -g
 
 OBJ			= 		$(SRCS:.c=.o)
 
@@ -47,3 +50,13 @@ fclean		:		clean
 		@echo "\033[90m[\033[91mft_printf\033[90m]\033[31m Deleted $(NAME)\033[0m"
 
 re			:		fclean all
+
+run			:		all
+		@gcc -Wall -Werror -Wextra -g libftprintf.a main.c -o printf
+		@clear
+		@./printf
+
+norme		:
+		@norminette srcs/*.c
+		@echo "\033[91m============ LIBFT ============\033[0m"
+		@norminette libft/*.c libft/*.h

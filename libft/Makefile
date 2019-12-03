@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/12 14:02:26 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/16 22:24:37 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/03 05:26:27 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -58,6 +58,8 @@ SRCS	=	ft_atoi.c				\
 			ft_lstclear.c			\
 			ft_lstiter.c			\
 			ft_lstmap.c				\
+			ft_strncpy.c			\
+			ft_strchr_len.c			\
 
 OBJS	= 	$(SRCS:.c=.o)
 

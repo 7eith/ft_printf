@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:32:47 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 04:10:01 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 21:40:46 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ static	t_pfinfo	*ft_initialise_pf_struct(const char *format)
 		return (NULL);
 	list->flags = 0;
 	list->width = 0;
-	list->precision = 0;
+	list->precision = -1;
 	list->type = 0;
 	list->content = NULL;
 	list->count = 0;
@@ -46,8 +46,11 @@ int		ft_printf(const char *format, ...)
 
 	pf_infos = ft_initialise_pf_struct(format);
 	va_start(pf_infos->va, format);
+	if (!ft_strchr(format, '%') && write(1, format, ft_strlen(format)))
+		return (ft_strlen(format));
 	parse((char *)format, pf_infos);
 	// print
+	// clear chained list with lstclear
 	va_end(pf_infos->va);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 05:44:26 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 20:41:28 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,9 @@
 
 int		main(void)
 {
+	ft_printf("simple printf hello!\n");
+	printf("simple printf hello!\n");
+
 	ft_printf("hello akhy %-*s\n", 21, "salut");
 	printf("%*.1s\n", 700, "salut");
 	// char	*str;

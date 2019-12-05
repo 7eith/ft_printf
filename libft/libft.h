@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/12 14:03:52 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 05:26:15 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 04:08:49 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,5 +72,7 @@ void (*del)(void *));
 
 char				*ft_strncpy(char *dest, char *src, unsigned int n);
 int					ft_strchr_len(const char *s, int c);
+char				*ft_lltoa_base(long long n, char *base);
+
 
 #endif

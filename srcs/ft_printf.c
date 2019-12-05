@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:32:47 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 21:40:46 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 02:05:54 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,9 +29,17 @@ static	t_pfinfo	*ft_initialise_pf_struct(const char *format)
 	return (list);
 }
 
-int		ft_print(char *str)
+int		ft_print(t_pfcontent *content)
 {
-	ft_putstr_fd(str, 1);
+	size_t		output_size;
+
+	output_size = 0;
+	while (content)
+	{
+		write(1, content->content, content->size);
+		output_size += content->size;
+		content = content->next;
+	}
 	return (1);
 }
 
@@ -42,17 +50,27 @@ int		ft_print(char *str)
 */
 int		ft_printf(const char *format, ...)
 {
-	t_pfinfo	*pf_infos;
+	t_pfinfo	*p;
 
-	pf_infos = ft_initialise_pf_struct(format);
-	va_start(pf_infos->va, format);
+	p = ft_initialise_pf_struct(format);
+	va_start(p->va, format);
 	if (!ft_strchr(format, '%') && write(1, format, ft_strlen(format)))
 		return (ft_strlen(format));
-	parse((char *)format, pf_infos);
+	// pf_add_content(p, ft_substr(format, 0, ft_strchr_len(format, '%')));
+	// pf_add_char(p, va_arg(p->va, int));
+	// pf_add_content(p, ft_strdup("\n"));
+	pf_add_content(p, ft_substr(format, 0, ft_strchr_len(format, '%')));
+	p = parse(p);
+	// while ((pf_infos = parse(pf_infos->format, pf_infos)))
+	// {
+
+	// }
+	// while has flags
 	// print
 	// clear chained list with lstclear
-	va_end(pf_infos->va);
-	return (0);
+	// printf("\033[1;31m[debug]starting PRINTING...\n\033[0m");
+	va_end(p->va);
+	return (ft_print(p->content));
 }
 
 // int		ft_printf(const char *format, ...)

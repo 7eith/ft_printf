@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 02:19:54 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 05:48:09 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,10 +68,9 @@ static	int			pf_is_flag(char c)
 **	parse_flags(struct printf_infos)
 **	@description:		parse flags and put in @param
 **	@param:				struct t_pfinfo
-**	@return:			(?)
 */
 
-int					parse_flags(t_pfinfo *p)
+void					parse_flags(t_pfinfo *p)
 {
 	p->count = ft_strchr_len(p->format, '%') + 1;
 	while (p->format[p->count] && pf_is_flag(p->format[p->count]))
@@ -88,17 +87,16 @@ int					parse_flags(t_pfinfo *p)
 			p->flags |= PF_SPACE;
 		p->count++;
 	}
-	return (1);
 }
 
 /*
 **	parse_size(struct printf_infos)
 **	@description:		parse size and put in @param
 **	@param:				struct t_pfinfo
-**	@return:			(?)
+**  ugly shit...
 */
 
-int					parse_size(t_pfinfo *p)
+void				parse_size(t_pfinfo *p)
 {
 	if (p->format[p->count] == '*')
 	{
@@ -110,19 +108,25 @@ int					parse_size(t_pfinfo *p)
 	{
 		p->flags |= PF_WIDTH;
 		p->width = ft_atoi(p->format + p->count);
-		p->count++;
+		while (ft_isdigit(p->format[p->count]))
+			p->count++;
 	}
 	if (p->format[p->count] == '.')
 	{
 		p->flags |= PF_PRECIS;
 		p->count++;
 		if (p->format[p->count] == '*')
+		{
 			p->precision = va_arg(p->va, int);
+			p->count++;
+		}
 		else
+		{
 			p->precision = ft_atoi(p->format + p->count);
-		p->count++;
+			while (ft_isdigit(p->format[p->count]))
+				p->count++;
+		}
 	}
-	return (1);
 }
 
 t_pfinfo			*parse(t_pfinfo *p)

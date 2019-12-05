@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 21:37:39 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 02:04:52 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@
 # include "../libft/libft.h"
 
 # define PF_TYPES 		"cspdiuxX%"
-# define PF_FLAGS		"-0*."
+# define PF_FLAGS		"-0+ "
 
 # define DEC_BASE 		"0123456789"
 # define LOW_HEXA 		"0123456789abcdef"
@@ -73,7 +73,11 @@ typedef struct			s_pfcontent
 
 int						ft_printf (const char *format, ...) __attribute__((format(printf,1,2)));
 
-t_pfinfo				*parse(char	*format, t_pfinfo *pf_infos);
+t_pfinfo				*parse(t_pfinfo *pf_infos);
+
+int						pf_add_content(t_pfinfo *p, char *str);
+int						pf_add_char(t_pfinfo *p, int c);
+
 
 char					*ft_strreplace(const char *str, char *target, char *substitute);
 

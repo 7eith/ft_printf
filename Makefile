@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/02 15:08:38 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/04 23:08:37 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,6 +19,7 @@ SRCS 		=		srcs/ft_printf.c	\
 					srcs/checker.c		\
 					srcs/parser.c		\
 					srcs/ft_strreplace.c\
+					srcs/pf_content.c	\
 
 FLAGS 		= 		-Wall -Wextra -Werror -g
 
@@ -57,6 +58,6 @@ run			:		all
 		@./printf
 
 norme		:
-		@norminette srcs/*.c
-		@echo "\033[91m============ LIBFT ============\033[0m"
-		@norminette libft/*.c libft/*.h
+		@echo "\033[91m"
+		@norminette srcs/*.c | grep -v "C++ comment"
+		@echo "\033[0m"

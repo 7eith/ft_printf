@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/03 20:22:32 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 00:10:28 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/07 05:01:43 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,8 +67,7 @@ int				pf_add_char(t_pfinfo *p, int c)
 **	@return:			1 parsed or 0 nothing to parse, maybe -1 if error
 */
 
-int				pf_add_content(t_pfinfo *p, char *str)
+void			pf_add_content(t_pfinfo *p, char *str)
 {
 	pf_lstadd_back(&p->content, pf_lstnew(str, 0));
-	return (1);
 }

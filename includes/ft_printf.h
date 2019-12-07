@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 02:04:52 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/07 05:24:34 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,10 +72,14 @@ typedef struct			s_pfcontent
 }						t_pfcontent;
 
 int						ft_printf (const char *format, ...) __attribute__((format(printf,1,2)));
+int						ft_print(t_pfcontent *content);
 
-t_pfinfo				*parse(t_pfinfo *pf_infos);
+void					parse(t_pfinfo *pf_infos);
 
-int						pf_add_content(t_pfinfo *p, char *str);
+void					convert(t_pfinfo *p);
+void					pf_convert_string(t_pfinfo *p);
+
+void					pf_add_content(t_pfinfo *p, char *str);
 int						pf_add_char(t_pfinfo *p, int c);
 
 

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 05:39:15 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/07 07:22:46 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,27 +38,43 @@ int		main(void)
 
 	// ft_printf("salut %s", "ca vaedsxz?");
 
-	printf("-------------[ 3/X - WIDTH ]-------------\n");
+	// printf("-------------[ 3/X - WIDTH ]-------------\n");
 
-	ft_printf("[minepf]%*s\n", 15, "123456789");
-	   printf("[printf]%*s\n", 15, "123456789");
+	// ft_printf("[minepf]%*s\n", 15, "123456789");
+	//    printf("[printf]%*s\n", 15, "123456789");
 
-	printf("\n\n-------------[ 3.5/X - WIDTH ]-------------\n\n");
+	// printf("\n\n-------------[ 3.5/X - WIDTH ]-------------\n\n");
 
 
-	ft_printf("[minepf]%20s\n", "123456789atoi");
-	   printf("[printf]%20s\n", "123456789atoi");
+	// ft_printf("[minepf]%123s\n", "123456789atoi");
+	//    printf("[printf]%123s\n", "123456789atoi");
 
-	printf("\n\n-------------[ 4/X - PRECISION ]-------------\n");
+	// printf("\n\n-------------[ 4/X - PRECISION ]-------------\n");
 
-	ft_printf("[minepf]%.500s\n", "123456789atoi");
-	   printf("[printf]%.500s\n", "123456789atoi");
+	// ft_printf("[minepf]%.500s\n", "123456789atoi");
+	//    printf("[printf]%.500s\n", "123456789atoi");
 
-	printf("\n\n-------------[ 4.5/X - PRECISION ]-------------\n");
+	// printf("\n\n-------------[ 4.5/X - PRECISION ]-------------\n");
 
-	ft_printf("[minepf]%.*s\n", 9, "123456789atoi");
-	   printf("[printf]%.*s\n", 9, "123456789atoi");
+	// ft_printf("[minepf]%.*s\n", 9, "123456789atoi");
+	//    printf("[printf]%.*s\n", 9, "123456789atoi");
 
+
+	// printf("\n\n-------------[ 5/X - WIDTH & PRECISION ]-------------\n");
+
+	// ft_printf("[minepf]%50.*s\n", 9, "123456789atoi");
+	//    printf("[printf]%50.*s\n", 9, "123456789atoi");
+
+	// ft_printf("[minepf]%*.*s\n", 15, 9, "123456789atoi");
+	//    printf("[printf]%*.*s\n", 15, 9, "123456789atoi");
+
+	// ft_printf("[minepf]%50.500s\n", "123456789atoi");
+	//    printf("[printf]%50.500s\n", "123456789atoi");
+
+
+	ft_printf("[my_printf]%*s others flags=%.*d\n", 10, "salut", 50, 69);
+	   printf("\n");
+	   printf("[printf]%*s others flags=%4.*d\n", 10, "salut", 5, 69);
 
 	// printf("\n\n-------------[ 4.5/X - PRECISION ]-------------\n");
 

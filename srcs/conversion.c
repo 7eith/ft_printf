@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   checker.c                                        .::    .:/ .      .::   */
+/*   conversion.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/17 19:35:07 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 06:18:56 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/07 06:18:34 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-// int		is_flag(const char *str)
-// {
-// 	char	flags[9] = "cspdiuxX%";
-// 	int		count;
+#include "../includes/ft_printf.h"
 
-
-// }
+void		convert(t_pfinfo *p)
+{
+	if (p->type == 's')
+		pf_convert_string(p);
+}

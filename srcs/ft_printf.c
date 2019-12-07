@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:32:47 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 02:05:54 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/07 05:22:39 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ static	t_pfinfo	*ft_initialise_pf_struct(const char *format)
 		return (NULL);
 	list->flags = 0;
 	list->width = 0;
-	list->precision = -1;
+	list->precision = 0;
 	list->type = 0;
 	list->content = NULL;
 	list->count = 0;
@@ -40,7 +40,7 @@ int		ft_print(t_pfcontent *content)
 		output_size += content->size;
 		content = content->next;
 	}
-	return (1);
+	return (output_size);
 }
 
 /*
@@ -51,7 +51,9 @@ int		ft_print(t_pfcontent *content)
 int		ft_printf(const char *format, ...)
 {
 	t_pfinfo	*p;
+	int 		i;
 
+	i = 0;
 	p = ft_initialise_pf_struct(format);
 	va_start(p->va, format);
 	if (!ft_strchr(format, '%') && write(1, format, ft_strlen(format)))
@@ -59,8 +61,41 @@ int		ft_printf(const char *format, ...)
 	// pf_add_content(p, ft_substr(format, 0, ft_strchr_len(format, '%')));
 	// pf_add_char(p, va_arg(p->va, int));
 	// pf_add_content(p, ft_strdup("\n"));
-	pf_add_content(p, ft_substr(format, 0, ft_strchr_len(format, '%')));
-	p = parse(p);
+	// while (ft_strchr(p->format + p->count, '%'))
+	// {
+	// 	pf_add_content(p, ft_substr(format, p->count, ft_strchr_len(format, '%')));
+	// 	p->count = p->count + ft_strchr_len(p->format + p->count, '%');
+	// 	parse(p);
+	// }
+	while (ft_strchr(p->format + p->count, '%'))
+	{
+		pf_add_content(p, ft_substr(format, p->count, ft_strchr_len(p->format + p->count, '%')));
+		p->count += ft_strchr_len(p->format + p->count, '%');
+		parse(p);
+		convert(p);
+	}
+	pf_add_content(p, ft_substr(format, p->count, ft_strlen(p->format + p->count)));
+
+	// pf_add_content(p, ft_substr(format, p->count, ft_strchr_len(format, '%')));
+	// p->count += ft_strchr_len(p->format + p->count, '%');
+	// parse(p);
+	// pf_add_content(p, ft_substr(format, p->count, ft_strchr_len(p->format + p->count, '%')));
+	// p->count = p->count + ft_strchr_len(p->format + p->count, '%');
+	// parse(p);
+
+
+
+
+
+
+
+	// p->flags &= ~PF_WIDTH;
+	// while (parse(p))
+	// {
+	// 	// printf("parsed!");
+	// }
+
+	// tant que j'arrive a parse
 	// while ((pf_infos = parse(pf_infos->format, pf_infos)))
 	// {
 

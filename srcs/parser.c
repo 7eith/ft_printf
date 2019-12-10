@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/07 04:51:26 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/10 01:35:44 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -138,7 +138,7 @@ void				parse_size(t_pfinfo *p)
 		else if (ft_isdigit(p->format[p->count]))
 		{
 			p->precision = ft_atoi(p->format + p->count);
-			p->count = p->count + ft_numlen(p->width);
+			p->count = p->count + ft_numlen(p->precision);
 		}
 	}
 }

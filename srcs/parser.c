@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/10 01:35:44 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/10 09:23:38 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,11 +27,11 @@ void				debug__print_structure(t_pfinfo *p)
 	printf("reste=%s\n\n", p->format + p->count);
 	if (!list)
 		printf("[Error]empty pf_content...\n");
-	while (list)
-	{
-		printf("[debug]size=%zu - content=%s\n", list->size, list->content);
-		list = list->next;
-	}
+	// while (list)
+	// {
+	// 	printf("[debug]size=%zu - content=%s\n", list->size, list->content);
+	// 	list = list->next;
+	// }
 	printf("======================\n");
 }
 
@@ -133,8 +133,8 @@ void				parse_size(t_pfinfo *p)
 	if (p->format[p->count] == '.' && (p->flags |= PF_PRECIS))
 	{
 		p->count++;
-		if (p->format[p->count] == '*')
-			p->precision = va_arg(p->va, int) && (p->count++);
+		if (p->format[p->count] == '*' && (p->count++))
+			p->precision = va_arg(p->va, int);
 		else if (ft_isdigit(p->format[p->count]))
 		{
 			p->precision = ft_atoi(p->format + p->count);
@@ -145,18 +145,18 @@ void				parse_size(t_pfinfo *p)
 
 void				parse(t_pfinfo *p)
 {
-	printf("at start of parsing=%s", p->format + p->count);
+	// printf("at start of parsing=%s", p->format + p->count);
 	if (p->format[p->count] == '%')
 		p->count++;
 	parse_flags(p);
-	printf("after flags=%s", p->format + p->count);
+	// printf("after flags=%s", p->format + p->count);
 	parse_size(p);
-	printf("after size=%s\n", p->format + p->count);
+	// printf("after size=%s\n", p->format + p->count);
 	// if (p->flags & PF_PRECIS)
 	// 	printf("[Flags] Width\n");
 	p->type = p->format[p->count];
 	p->count++;
-	debug__print_structure(p);
-	debug_print_flags(p);
-	printf("type=%c\n", p->type);
+	// debug__print_structure(p);
+	// debug_print_flags(p);
+	// printf("type=%c\n", p->type);
 }

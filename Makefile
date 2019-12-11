@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/07 04:57:44 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/10 05:46:09 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -42,7 +42,7 @@ $(NAME): $(LIB) $(OBJ)
 		@$(CC) -I $(HEADERS) -o $@ -c $< $(FLAGS)
 
 clean		:
-		@/bin/rm -f $(OBJS)
+		@/bin/rm -f $(OBJ)
 		@make clean -C libft
 		@echo "\033[90m[\033[91mft_printf\033[90m]\033[31m Deleted *.o\033[0m"
 

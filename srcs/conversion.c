@@ -6,13 +6,12 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/10 09:23:29 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 00:10:33 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
 
 void			pf_debug_print_flags(t_pfinfo *p)
 {

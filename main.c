@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/11 06:16:47 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 00:57:18 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -120,10 +120,30 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-		ft_printf("[%-5.*s]", 2, "salut");
+		ft_printf("[%-5.*s]", 2, "minused");
 	printf("\n");
-	   	   printf("[%-5.*s]", 2, "salut");
+	   	   printf("[%-5.*s]", 2, "minused");
 
+	// printf("\n");
+	// printf("\n");
+
+	// 	ft_printf("[%-*.*s]", 5, 2, "salut");
+	// printf("\n");
+	//    	   printf("[%-*.*s]", 5, 2, "salut");
+
+	printf("\n");
+	printf("\n");
+
+		ft_printf("[%*s]", -15, "minused");
+	printf("\n");
+	   	   printf("[%*s]", -15, "minused");
+
+	// printf("\n");
+	// printf("\n");
+
+	// 	ft_printf("[%.s]", 42);
+	// printf("\n");
+	//    	   printf("[%.s]", 42);
 
 	// ft_printf("[my_printf]%-*smec\n", 50, "salut");
 	//    printf("[df_printf]%-*smec\n", 50, "salut");

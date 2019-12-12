@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/10 09:23:38 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 00:02:44 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -151,6 +151,13 @@ void				parse(t_pfinfo *p)
 	parse_flags(p);
 	// printf("after flags=%s", p->format + p->count);
 	parse_size(p);
+	if (p->width < 0)
+	{
+		p->width *= -1;
+		p->flags |= PF_MINUS;
+	}
+	if (p->precision < 0)
+		p->precision *= -1;
 	// printf("after size=%s\n", p->format + p->count);
 	// if (p->flags & PF_PRECIS)
 	// 	printf("[Flags] Width\n");

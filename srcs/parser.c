@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/13 10:42:21 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/13 15:26:22 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,20 +56,6 @@ void			debug_print_flags(t_pfinfo *p)
 	if (flags & PF_HASH)
 		printf("[Flags] Hash\n");
 }
-
-// static	int			pf_is_type(char c)
-// {
-// 	size_t		count;
-
-//  	count = 0;
-//  	while (PF_TYPES[count])
-// 	{
-//  		if (PF_TYPES[count] == c)
-//  			return (1);
-//  		count++;
-//  	}
-//  	return (0);
-// }
 
 static	int			pf_is_flag(char c)
 {

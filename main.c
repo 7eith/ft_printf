@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/13 11:41:55 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/13 14:27:30 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -259,6 +259,50 @@ int		main(void)
 	ft_printf("[%c]", '\t');
 	printf("\n");
 	printf("[%c]", '\t');
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t4 - %%%%\n");
+
+	ft_printf("[%% salut]");
+	printf("\n");
+	printf("[%% salut]");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%%]");
+	printf("\n");
+	printf("[%%]");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%% %-%]");
+	printf("\n");
+	printf("[%% %-%]");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%10%]");
+	printf("\n");
+	printf("[%10%]");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-10%]");
+	printf("\n");
+	printf("[%-10%]");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.%]");
+	printf("\n");
+	printf("[%.%]");
 
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");

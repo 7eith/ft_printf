@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/12 00:10:33 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/13 11:46:18 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,18 +35,28 @@ void			pf_debug_print_flags(t_pfinfo *p)
 		printf("[Flags] Hash\n");
 }
 
-void		pf_reset_parsing(t_pfinfo *p)
+void		pf_convert_char(t_pfinfo *p)
 {
-	// pf_debug_print_flags(p);
-	p->flags = 0;
-	// pf_debug_print_flags(p);
+	char	c;
+
+	c = va_arg(p->va, int);
+	if (p->flags & PF_MINUS)
+	{
+		pf_charadd(p, c);
+		// if (p->width > 1)
+			// pf_stradd(p, )
+	}
 }
 
 void		convert(t_pfinfo *p)
 {
+	if (p->type == '%')
+		pf_add_content(p, "%");
+	if (p->type == 'c')
+		pf_convert_char(p);
 	if (p->type == 's')
 		pf_convert_string(p);
-
-
+	if (p->type == 'd')
+		pf_convert_decimal(p);
 	p->flags = 0;
 }

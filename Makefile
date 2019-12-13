@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/10 05:46:09 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/13 14:04:42 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -15,12 +15,13 @@ NAME		=		libftprintf.a
 
 HEADERS		=		includes/
 
-SRCS 		=		srcs/ft_printf.c	\
-					srcs/parser.c		\
-					srcs/ft_strreplace.c\
-					srcs/pf_content.c	\
-					srcs/conversion.c	\
-					srcs/pf_converter.c \
+SRCS 		=		srcs/ft_printf.c			\
+					srcs/parser.c				\
+					srcs/ft_strreplace.c		\
+					srcs/pf_content_manager.c	\
+					srcs/conversion.c			\
+					srcs/pf_converter.c 		\
+					srcs/pf_utils.c				\
 
 FLAGS 		= 		-Wall -Wextra -Werror -g
 

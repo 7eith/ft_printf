@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/12 00:57:18 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/13 11:41:55 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,250 @@
 
 int		main(void)
 {
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t1. - %%s\n");
+
+	ft_printf("[%s]", "Salut");
+	printf("\n");
+	printf("[%s]", "Salut");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%15s]", "Salut");
+	printf("\n");
+	printf("[%15s]", "Salut");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%20.3s]", "Salut");
+	printf("\n");
+	printf("[%20.3s]", "Salut");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%20.10s]", "Salut");
+	printf("\n");
+	printf("[%20.10s]", "Salut");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%20.10s]", NULL);
+	printf("\n");
+	printf("[%20.10s]", NULL);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.4s]", NULL);
+	printf("\n");
+	printf("[%.4s]", NULL);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-5.*s]", 2, "minused");
+	printf("\n");
+	printf("[%-5.*s]", 2, "minused");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-*.*s]", 5, 2, "salut");
+	printf("\n");
+	printf("[%-*.*s]", 5, 2, "salut");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%*s]", -15, "minused");
+	printf("\n");
+	printf("[%*s]", -15, "minused");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%*s]", -5, "minused");
+	printf("\n");
+	printf("[%*s]", -5, "minused");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.*s]", -15, "nega-tive");
+	printf("\n");
+	printf("[%.*s]", -15, "nega-tive");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.*s]", -0, "pas vu");
+	printf("\n");
+	printf("[%.*s]", -0, "pas vu");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("|%20s|\n", "zwTJwkwl8dQ0pNVtnhzRlRXP27Pn6vyNDQXylDE97llkb6JMRQtPHW");
+	printf("\n");
+	printf("|%20s|\n", "zwTJwkwl8dQ0pNVtnhzRlRXP27Pn6vyNDQXylDE97llkb6JMRQtPHW");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("|%20s|\n", "fnpQahfk7LxmxCK7");
+	printf("\n");
+	printf("|%20s|\n", "fnpQahfk7LxmxCK7");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%*.*s]", -5, 0, "Hello");
+	printf("\n");
+	printf("[%*.*s]", -5, 0, "Hello");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%*s]", -4, "???e?");
+	printf("\n");
+	printf("[%*s]", -4, "???e?");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.*s]", -3, "Hello");
+	printf("\n");
+	printf("[%.*s]", -3, "Hello");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.s]", "42");
+	printf("\n");
+	printf("[%.s]", "42");
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t1.5 - %%s mixed\n");
+
+	ft_printf("[%-*.*s] [%.2s] [%20.3s] [%-10.5s] [%*s]", 5, 2, "salut", NULL, "encore", "toi", -4, "?????");
+	printf("\n");
+	printf("[%-*.*s] [%.2s] [%20.3s] [%-10.5s] [%*s]", 5, 2, "salut", NULL, "encore", "toi", -4, "?????");
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t2 - %%d\n");
+
+	ft_printf("[%d]", 0);
+	printf("\n");
+	printf("[%d]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", -0);
+	printf("\n");
+	printf("[%d]", -0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", 1);
+	printf("\n");
+	printf("[%d]", 1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", -1);
+	printf("\n");
+	printf("[%d]", -1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%7d]", 250);
+	printf("\n");
+	printf("[%7d]", 250);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-7d]minused", 251);
+	printf("\n");
+	printf("[%-7d]minused", 251);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-.7d]minused", 251);
+	printf("\n");
+	printf("[%-.7d]minused", 251);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.5d]", 500);
+	printf("\n");
+	printf("[%.5d]", 500);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.1d]", 500);
+	printf("\n");
+	printf("[%.1d]", 500);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-.5d]", 1000);
+	printf("\n");
+	printf("[%-.5d]", 1000);
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t3 - %%c\n");
+
+	ft_printf("[%c]", 'a');
+	printf("\n");
+	printf("[%c]", 'a');
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-5c]", 'z');
+	printf("\n");
+	printf("[%-5c]", 'z');
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%5c]", 'c');
+	printf("\n");
+	printf("[%5c]", 'c');
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%c]", '\0');
+	printf("\n");
+	printf("[%c]", '\0');
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%c]", '\t');
+	printf("\n");
+	printf("[%c]", '\t');
+
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");
 	// printf("printed_size=%d\n", ft_printf("simple printf hello!\n"));
@@ -75,68 +319,7 @@ int		main(void)
 	// ft_printf("[my_printf]%5s", "Hello");
 	//    printf("[df_printf]%5s", "Hello");
 
-	// printf("%*s", -1000, "");
-
-		ft_printf("[%s]", "Salut");
-	printf("\n");
-	   	   printf("[%s]", "Salut");
-
-	printf("\n");
-	printf("\n");
-
-		ft_printf("[%15s]", "Salut");
-	printf("\n");
-	   	   printf("[%15s]", "Salut");
-
-	printf("\n");
-	printf("\n");
-
-		ft_printf("[%20.3s]", "Salut");
-	printf("\n");
-	   	   printf("[%20.3s]", "Salut");
-
-	printf("\n");
-	printf("\n");
-
-		ft_printf("[%20.10s]", "Salut");
-	printf("\n");
-	   	   printf("[%20.10s]", "Salut");
-
-	printf("\n");
-	printf("\n");
-
-
-		ft_printf("[%20.10s]", NULL);
-	printf("\n");
-	   	   printf("[%20.10s]", NULL);
-
-	printf("\n");
-	printf("\n");
-
-		ft_printf("[%.4s]", NULL);
-	printf("\n");
-	   	   printf("[%.4s]", NULL);
-
-	printf("\n");
-	printf("\n");
-
-		ft_printf("[%-5.*s]", 2, "minused");
-	printf("\n");
-	   	   printf("[%-5.*s]", 2, "minused");
-
-	// printf("\n");
-	// printf("\n");
-
-	// 	ft_printf("[%-*.*s]", 5, 2, "salut");
-	// printf("\n");
-	//    	   printf("[%-*.*s]", 5, 2, "salut");
-
-	printf("\n");
-	printf("\n");
-
-		ft_printf("[%*s]", -15, "minused");
-	printf("\n");
-	   	   printf("[%*s]", -15, "minused");
+	// ft_printf("%*s", -1000, "");
 
 	// printf("\n");
 	// printf("\n");

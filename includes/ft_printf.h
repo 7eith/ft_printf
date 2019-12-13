@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/07 05:24:34 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/13 14:00:58 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,10 +78,26 @@ void					parse(t_pfinfo *pf_infos);
 
 void					convert(t_pfinfo *p);
 void					pf_convert_string(t_pfinfo *p);
+void					pf_convert_decimal(t_pfinfo *p);
 
 void					pf_add_content(t_pfinfo *p, char *str);
 int						pf_add_char(t_pfinfo *p, int c);
 
+/*
+**	srcs/pf_content.c
+*/
+
+void					pf_charadd(t_pfinfo *p, int c);
+void					pf_stradd(t_pfinfo *p, char *str);
+
+/*
+**	srcs/pf_utilities.c
+*/
+
+char					*pf_create_zero_string(int width);
+char					*pf_create_zero_string(int width);
+void					pf_addspaces(t_pfinfo *p, int width);
+void					pf_addzeros(t_pfinfo *p, int width);
 
 char					*ft_strreplace(const char *str, char *target, char *substitute);
 

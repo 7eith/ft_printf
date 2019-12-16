@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/13 14:04:42 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/14 15:46:48 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -41,6 +41,8 @@ $(NAME): $(LIB) $(OBJ)
 
 %.o: %.c
 		@$(CC) -I $(HEADERS) -o $@ -c $< $(FLAGS)
+
+bonus		:		$(NAME)
 
 clean		:
 		@/bin/rm -f $(OBJ)

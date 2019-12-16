@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/13 14:27:30 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/16 18:05:15 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -154,78 +154,6 @@ int		main(void)
 	printf("\n");
 
 	printf("__________________________________________________________________\n");
-	printf("\t\t\t\t2 - %%d\n");
-
-	ft_printf("[%d]", 0);
-	printf("\n");
-	printf("[%d]", 0);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%d]", -0);
-	printf("\n");
-	printf("[%d]", -0);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%d]", 1);
-	printf("\n");
-	printf("[%d]", 1);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%d]", -1);
-	printf("\n");
-	printf("[%d]", -1);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%7d]", 250);
-	printf("\n");
-	printf("[%7d]", 250);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%-7d]minused", 251);
-	printf("\n");
-	printf("[%-7d]minused", 251);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%-.7d]minused", 251);
-	printf("\n");
-	printf("[%-.7d]minused", 251);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%.5d]", 500);
-	printf("\n");
-	printf("[%.5d]", 500);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%.1d]", 500);
-	printf("\n");
-	printf("[%.1d]", 500);
-
-	printf("\n");
-	printf("\n");
-
-	ft_printf("[%-.5d]", 1000);
-	printf("\n");
-	printf("[%-.5d]", 1000);
-
-	printf("\n");
-
-	printf("__________________________________________________________________\n");
 	printf("\t\t\t\t3 - %%c\n");
 
 	ft_printf("[%c]", 'a');
@@ -303,6 +231,180 @@ int		main(void)
 	ft_printf("[%.%]");
 	printf("\n");
 	printf("[%.%]");
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t%%d\n");
+
+	ft_printf("[%d]", 0);
+	printf("\n");
+	printf("[%d]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", -0);
+	printf("\n");
+	printf("[%d]", -0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", 1);
+	printf("\n");
+	printf("[%d]", 1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", -1);
+	printf("\n");
+	printf("[%d]", -1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%7d]", 250);
+	printf("\n");
+	printf("[%7d]", 250);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-7d]minused", 251);
+	printf("\n");
+	printf("[%-7d]minused", 251);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-.7d]minused", 251);
+	printf("\n");
+	printf("[%-.7d]minused", 251);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.5d]", 500);
+	printf("\n");
+	printf("[%.5d]", 500);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.1d]", 500);
+	printf("\n");
+	printf("[%.1d]", 500);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-.5d]", 1000);
+	printf("\n");
+	printf("[%-.5d]", 1000);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%0.54d]", 430);
+	printf("\n");
+	printf("[%0.54d]", 430);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", 2147483647 + 1);
+	printf("\n");
+	printf("[%d]", 2147483647 + 1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%0.54d]", -27627);
+	printf("\n");
+	printf("[%0.54d]", -27627);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%54.0d]", -644927);
+	printf("\n");
+	printf("[%54.0d]", -644927);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("precision[%.*d]", 10, -123);
+	printf("\n");
+	printf("precision[%.*d]", 10, -123);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("width[%*d]", 10, -123);
+	printf("\n");
+	printf("width[%*d]", 10, -123);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("twice[%*.5d]", 10, -123);
+	printf("\n");
+	printf("twice[%*.5d]", 10, -123);
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t%%d\n");
+
+	ft_printf("precision[%-.*d]", 10, -123);
+	printf("\n");
+	printf("precision[%-.*d]", 10, -123);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("width[%-*d]", 10, -123);
+	printf("\n");
+	printf("width[%-*d]", 10, -123);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("twice[%-*.5d]", 10, -123);
+	printf("\n");
+	printf("twice[%-*.5d]", 10, -123);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("-17.10d[%-17.10d]", -1700000);
+	printf("\n");
+	printf("-17.10d[%-17.10d]", -1700000);
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t%%d\n");
+
+	ft_printf("[%017.5d]", -123456789);
+	printf("\n");
+	printf("[%017.9d]", -123456789);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("17.10d[%17.10d]", INT32_MIN);
+	printf("\n");
+	printf("17.10d[%17.10d]", INT32_MIN);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("space 15.10d[% 15.10d]", INT32_MIN);
+	printf("\n");
+	printf("space 15.10d[% 15.10d]", INT32_MIN);
 
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");

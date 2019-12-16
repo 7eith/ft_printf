@@ -1,0 +1,7 @@
+*.o
+printf.dSYM/
+*.a
+*.out
+test-printf/
+printf
+output

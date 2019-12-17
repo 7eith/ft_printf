@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/16 18:05:38 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 20:02:15 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,67 +35,42 @@ void			debg(t_pfinfo *p)
 		printf("[Flags] Hash\n");
 }
 
-
 void		pf_dminus(t_pfinfo *p, long number)
 {
 	if (number < 0)
 	{
-		number *= -1;
-		printf("is negative\n");
-		printf("number is =%ld\n", number);
 		p->width--;
+		number *= -1;
 		pf_charadd(p, '-');
 	}
 	if (p->flags & PF_PRECIS)
-	{
-		printf("added zeros\n");
 		pf_addzeros(p, ft_numlen(number) - p->precision);
-	}
-	printf("enculer de merde %s\n", ft_itoa(number));
-	pf_stradd(p, ft_itoa(number));
+	pf_stradd(p, ft_ltoa(number));
 	if (p->flags & PF_WIDTH)
 	{
-		printf("added spaces\n");
-		pf_addspaces(p, p->width - ft_numlen(number));
+		if (p->precision)
+			return (pf_addspaces(p, p->width - p->precision));
+		return (pf_addspaces(p, p->width - (ft_numlen(number))));
 	}
 }
+
+//twice[-00123    ]
 
 void		pf_convert_decimal(t_pfinfo *p)
 {
-	long	number;
+	long		number;
 
-	number = va_arg(p->va, int);
+	number = (long)va_arg(p->va, int);
+	printf("number=%d\n", ft_numlen(number));
 	if (!p->flags)
-		return (pf_stradd(p, ft_itoa(number)));
+		return (pf_stradd(p, ft_ltoa(number)));
+	printf("has minus\n");
 	if (p->flags & PF_MINUS)
 		return (pf_dminus(p, number));
-	if (p->flags & PF_PRECIS && !(p->flags & PF_WIDTH))
-	{
-		if (number < 0)
-			pf_charadd(p, '-');
-		pf_addzeros(p, p->precision - ft_numlen(number));
-		return (pf_stradd(p, ft_itoa(number < 0 ? number * -1 : number)));
-	}
-	if (p->flags & PF_PRECIS && p->flags & PF_WIDTH)
-	{
-		if (number < 0)
-			p->width--;
-		printf("width=%d, numlen=%d, precision=%d\n", p->width, ft_numlen(number), p->precision);
-		pf_addspaces(p, p->width - p->precision);
-		pf_charadd(p, '-');
-		pf_addzeros(p, p->precision - ft_numlen(number));
-		return (pf_stradd(p, ft_itoa(number < 0 ? number * -1 : number)));
-	}
-	if (p->flags & PF_WIDTH)
-	{
-		if (number < 0)
-			p->width--;
-		pf_addspaces(p, p->width - ft_numlen(number));
-		return (pf_stradd(p, ft_itoa(number)));
-	}
 }
 
-// twice[    -00123]
+// width[-123         ]
+// width[-123      ]
 
 // void		pf_convert_decimal(t_pfinfo *p)
 // {

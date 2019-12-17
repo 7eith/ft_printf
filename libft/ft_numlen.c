@@ -6,12 +6,12 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/06 03:04:51 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/10 01:35:07 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 15:49:51 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-int			ft_numlen(int number)
+int			ft_numlen(long number)
 {
 	int		count;
 

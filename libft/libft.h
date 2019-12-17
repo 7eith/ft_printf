@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/12 14:03:52 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/06 03:05:17 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 17:33:07 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,5 +74,7 @@ char				*ft_strncpy(char *dest, char *src, unsigned int n);
 int					ft_strchr_len(const char *s, int c);
 char				*ft_lltoa_base(long long n, char *base);
 int					ft_numlen(int number);
+char				*ft_ltoa(long number);
+char				*ft_ulltoa_base(unsigned long long number, char *base);
 
 #endif

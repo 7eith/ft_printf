@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 04:01:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 04:08:09 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 15:23:49 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,7 @@ static	int		ft_get_size(int number)
 		number = number / 10;
 		count++;
 	}
-	count++;
-	return (count);
+	return (count + 1);
 }
 
 char			*ft_lltoa_base(long long n, char *base)

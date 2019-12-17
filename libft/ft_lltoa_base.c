@@ -6,27 +6,12 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 04:01:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 15:23:49 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 17:30:15 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static	int		ft_get_size(int number)
-{
-	int		count;
-
-	count = 0;
-	if (number < 0)
-		number = -number;
-	while (number > 9)
-	{
-		number = number / 10;
-		count++;
-	}
-	return (count + 1);
-}
 
 char			*ft_lltoa_base(long long n, char *base)
 {
@@ -34,7 +19,7 @@ char			*ft_lltoa_base(long long n, char *base)
 	int		neg;
 	char	*tab;
 
-	size = ft_get_size(n);
+	size = ft_numlen(n);
 	neg = 0;
 	if (n < 0)
 	{

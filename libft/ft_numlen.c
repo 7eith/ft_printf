@@ -6,19 +6,18 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/06 03:04:51 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 20:04:27 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 13:34:51 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int			ft_numlen(int number)
+int			ft_numlen(int n)
 {
 	int		count;
+	long	number;
 
+	number = (long)n;
 	count = 1;
-	printf("number is =%d\n", number);
 	if (number < 0)
 		number *= -1;
 	while (number > 9)

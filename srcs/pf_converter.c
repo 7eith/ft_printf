@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 20:02:15 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 23:19:46 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,37 +37,73 @@ void			debg(t_pfinfo *p)
 
 void		pf_dminus(t_pfinfo *p, long number)
 {
+	if (p->flags & PF_PRECIS && !p->precision && !number)
+		return (pf_addspaces(p, p->width));
+	printf("[debug]precision=%d, width=%d, numlen=%d\n", p->precision, p->width, ft_numlen(number));
 	if (number < 0)
 	{
 		p->width--;
 		number *= -1;
 		pf_charadd(p, '-');
 	}
-	if (p->flags & PF_PRECIS)
+	if (p->flags & PF_PRECIS && p->precision && p->precision > ft_numlen(number))
 		pf_addzeros(p, ft_numlen(number) - p->precision);
 	pf_stradd(p, ft_ltoa(number));
 	if (p->flags & PF_WIDTH)
 	{
-		if (p->precision)
-			return (pf_addspaces(p, p->width - p->precision));
-		return (pf_addspaces(p, p->width - (ft_numlen(number))));
+		if (p->width <= ft_numlen(number))
+			return ;
+		if (p->width <= p->precision + ft_numlen(number))
+			return (pf_addspaces(p, p->width - (p->precision + ft_numlen(number))));
+		printf("???\n");
+		pf_addspaces(p, p->width - ft_numlen(number));
 	}
+	// if (p->flags & PF_WIDTH && p->width && p->width - (ft_numlen(number) + p->precision) > 0)
+	// {
+	// 	printf("[debug]calcul=%d\n", p->width - ft_numlen(number));
+	// 	printf("[debug]calcul2bg=%d\n", p->width - p->precision);
+	// 	if (p->precision && p->precision < ft_numlen(number) && p->width < ft_numlen(number))
+	// 	{
+	// 		printf("???\n");
+	// 		return (pf_addspaces(p, p->width - p->precision));
+	// 	}
+	// 	return (pf_addspaces(p, p->width - ft_numlen(number)));
+	// 	// printf("[debug]precision=%d, width=%d, numlen=%d\n", p->precision, p->width, ft_numlen(number));
+	// }
 }
 
-//twice[-00123    ]
+// twice[-00123 ]
+// twice[-00123    ]
 
 void		pf_convert_decimal(t_pfinfo *p)
 {
 	long		number;
 
 	number = (long)va_arg(p->va, int);
-	printf("number=%d\n", ft_numlen(number));
 	if (!p->flags)
 		return (pf_stradd(p, ft_ltoa(number)));
-	printf("has minus\n");
 	if (p->flags & PF_MINUS)
 		return (pf_dminus(p, number));
+	if (p->flags & PF_WIDTH && p->width - (p->precision - ft_numlen(number)) > 0)
+	{
+		if (p->precision)
+		{
+			// printf("calcul=%d\n", p->width - (p->precision - ft_numlen(number)));
+			return (pf_addspaces(p, p->width - p->precision));
+		}
+		// printf("calcul=%d\n", p->width - p->precision);
+		return (pf_addspaces(p, p->width - (ft_numlen(number))));
+	}
+	if (number < 0)
+	{
+		p->width--;
+		number *= -1;
+		pf_charadd(p, '-');
+	}
 }
+
+// [-           ]
+// [       -123456789]
 
 // width[-123         ]
 // width[-123      ]

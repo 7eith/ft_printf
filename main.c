@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 17:38:55 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 18:34:14 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -356,7 +356,7 @@ int		main(void)
 	printf("\n");
 
 	printf("__________________________________________________________________\n");
-	printf("\t\t\t\t%%d\n");
+	printf("\t\t\t\t%%d - MINUSED\n");
 
 	ft_printf("precision[%-.*d]", 10, -123);
 	printf("\n");
@@ -391,6 +391,79 @@ int		main(void)
 	printf("-17.10d[%-17.10d]", INT32_MIN);
 
 	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-1.0d]", 0);
+	printf("\n");
+	printf("[%-1.0d]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-2.0d]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%-2.0d]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-3.0d]", -1);
+	dprintf(1, "\n");
+	dprintf(1, "[%-3.0d]", -1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("1[%-1.0d]", -1);
+	dprintf(1, "\n");
+	dprintf(1, "1[%-1.0d]", -1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-10.2d]", INT32_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%-10.2d]", INT32_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-11.2d]", INT32_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%-11.2d]", INT32_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-11.0d]", 10000);
+	dprintf(1, "\n");
+	dprintf(1,"[%-11.0d]", 10000);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-9.0d]", INT32_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%-9.0d]", INT32_MAX);
+
+	// printf("\n");
+	// printf("\n");
+
+	// ft_printf(                   );
+	// dprintf(1, "\n");
+	// dprintf(1,                      );
+
+	// 636 - ("%-1.0d", -1) : FAILED
+	// 648 - ("%-9.0d", INT_MAX) : FAILED
+	// 649 - ("%-9.1d", INT_MAX) : FAILED
+	// 650 - ("%-9.2d", INT_MAX) : FAILED
+	// 651 - ("%-9.10d", INT_MAX) : FAILED
+	// 653 - ("%-10.1d", INT_MAX) : FAILED
+	// 654 - ("%-10.2d", INT_MAX) : FAILED
+	// 657 - ("%-11.1d", INT_MAX) : FAILED
+	// 658 - ("%-11.2d", INT_MAX) : FAILED
+
+	printf("\n");
 
 	printf("__________________________________________________________________\n");
 	printf("\t\t\t\t%%d\n");
@@ -411,7 +484,11 @@ int		main(void)
 
 	ft_printf("space 15.10d[% 15.10d]", INT32_MIN);
 	printf("\n");
-	printf("space 15.10d[% 15.10d]", INT32_MIN);
+	printf("space 15.10d[%15.10d]", INT32_MIN);
+
+	printf("\n");
+	printf("\n");
+
 
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");

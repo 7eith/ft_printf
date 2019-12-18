@@ -6,46 +6,97 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/14 15:46:48 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/18 19:36:25 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NAME		=		libftprintf.a
 
-HEADERS		=		includes/
+HEADERS		=		includes/ft_printf.h
 
-SRCS 		=		srcs/ft_printf.c			\
-					srcs/parser.c				\
-					srcs/ft_strreplace.c		\
-					srcs/pf_content_manager.c	\
-					srcs/conversion.c			\
-					srcs/pf_converter.c 		\
-					srcs/pf_utils.c				\
+LIBFT_INC	=		libft/libft.h
+
+LIBFT_SRCS	=		ft_atoi.c				\
+					ft_bzero.c				\
+					ft_isalnum.c			\
+					ft_isalpha.c			\
+					ft_isascii.c			\
+					ft_isdigit.c			\
+					ft_isprint.c			\
+					ft_memcpy.c				\
+					ft_memset.c				\
+					ft_strchr.c				\
+					ft_strrchr.c			\
+					ft_strlen.c				\
+					ft_strncmp.c			\
+					ft_strnstr.c			\
+					ft_tolower.c			\
+					ft_toupper.c			\
+					ft_memccpy.c			\
+					ft_memmove.c			\
+					ft_memchr.c				\
+					ft_memcmp.c				\
+					ft_calloc.c				\
+					ft_strdup.c				\
+					ft_strlcpy.c			\
+					ft_strlcat.c			\
+					ft_substr.c				\
+					ft_strjoin.c			\
+					ft_strtrim.c			\
+					ft_split.c				\
+					ft_itoa.c				\
+					ft_strmapi.c			\
+					ft_putchar_fd.c			\
+					ft_putstr_fd.c			\
+					ft_putendl_fd.c			\
+					ft_putnbr_fd.c			\
+					ft_lstnew.c				\
+					ft_lstadd_front.c		\
+					ft_lstsize.c			\
+					ft_lstlast.c			\
+					ft_lstadd_back.c		\
+					ft_lstdelone.c			\
+					ft_lstclear.c			\
+					ft_lstiter.c			\
+					ft_lstmap.c				\
+					ft_strncpy.c			\
+					ft_strchr_len.c			\
+					ft_lltoa_base.c			\
+					ft_numlen.c				\
+					ft_ltoa.c				\
+					ft_ulltoa_base.c		\
+
+SRCS 		=		ft_printf.c				\
+					parser.c				\
+					ft_strreplace.c			\
+					pf_content_manager.c	\
+					conversion.c			\
+					pf_converter.c 			\
+					pf_utils.c				\
 
 FLAGS 		= 		-Wall -Wextra -Werror -g
 
-OBJ			= 		$(SRCS:.c=.o)
+OBJS		= 		$(addprefix srcs/, $(SRCS:.c=.o)) $(addprefix libft/, $(LIBFT_SRCS:.c=.o))
 
 LIB 		= 		libft/libft.a
 
 all			: 		$(NAME)
 
-$(LIB)		:
+$(NAME)		: $(OBJS)
 		@make -C libft
-
-$(NAME): $(LIB) $(OBJ)
 		@cp libft/libft.a $(NAME)
-		@ar rcs $(NAME) $(OBJ) $(LIB)
+		@ar rcs $(NAME) $(OBJS) $(LIB)
 		@echo "\033[90m[\033[32mft_printf\033[90m]\033[32m Successfully compiled ft_printf.\033[0m"
 
-%.o: %.c
-		@$(CC) -I $(HEADERS) -o $@ -c $< $(FLAGS)
+%.o: %.c $(HEADERS) libft/libft.h
+		gcc -I $(HEADERS) -I $(LIBFT_INC) -o $@ -c $< $(FLAGS)
+		@echo "\033[34m$@ $<█\c\033[0m"
 
 bonus		:		$(NAME)
 
 clean		:
-		@/bin/rm -f $(OBJ)
+		@/bin/rm -f $(OBJS)
 		@make clean -C libft
 		@echo "\033[90m[\033[91mft_printf\033[90m]\033[31m Deleted *.o\033[0m"
 

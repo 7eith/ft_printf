@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/12 14:02:26 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/17 17:31:47 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/18 19:30:23 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -71,11 +71,11 @@ all		: 	$(NAME)
 
 $(NAME)	:	$(OBJS)
 		@ar -rcs $(NAME) $(OBJS)
-		@echo "\033[90m[\033[32mLibft\033[90m]\033[32m Successfully compiled Libft.\033[0m"
+		@echo "\n\033[90m[\033[32mLibft\033[90m]\033[32m Successfully compiled Libft.\033[0m"
 
 %.o:%.c	$(HEADER)
 		@gcc -Wall -Wextra -Werror -o $@ -c $< -I $(HEADER)
-		@echo "\033[90m[\033[32mLibft\033[90m]\033[34m Compiling $<\033[0m"
+		@echo "\033[32m█\c\033[0m"
 
 clean	:
 		@/bin/rm -f $(OBJS)

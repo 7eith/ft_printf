@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/20 16:06:00 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/21 03:24:30 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -114,5 +114,5 @@ run			:		all
 
 norme		:
 		@echo "\033[91m"
-		@norminette srcs/*.c | grep -v "C++ comment"
+		@norminette srcs/*.c includes/*.h libft/*.c libft/*.h
 		@echo "\033[0m"

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 01:37:22 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/21 03:03:01 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ void		pf_dminus(t_pfinfo *p, long number)
 
 	if (p->flags & PF_PRECIS && !p->precision && !number)
 		return (pf_addspaces(p, p->width));
-	if (number < 0)
+	if (neg)
 	{
 		number *= -1;
 		pf_charadd(p, '-');
@@ -41,28 +41,31 @@ void		pf_dminus(t_pfinfo *p, long number)
 
 void		pf_convert_decimal(t_pfinfo *p)
 {
-	long		number;
+	const	long	number = (long)va_arg(p->va, int);
+	int				neg;
+	int				len_to_print;
 
-	number = (long)va_arg(p->va, int);
+	neg = number < 0 ? 1 : 0;
 	if (!p->flags)
 		return (pf_stradd(p, ft_ltoa(number)));
 	if (p->flags & PF_MINUS)
 		return (pf_dminus(p, number));
-	if (p->flags & PF_WIDTH
-	&& p->width - (p->precision - ft_numlen(number)) > 0)
-	{
-		if (p->precision)
-		{
-			return (pf_addspaces(p, p->width - p->precision));
-		}
-		return (pf_addspaces(p, p->width - (ft_numlen(number))));
-	}
-	if (number < 0)
-	{
-		p->width--;
-		number *= -1;
+	if (p->flags & PF_PRECIS && !p->precision && !number)
+		return (pf_addspaces(p, p->width));
+	len_to_print = ft_numlen(number) + neg;
+	if (p->precision > ft_numlen(number))
+		len_to_print = p->precision + neg;
+	if (p->flags & PF_WIDTH && p->width >= len_to_print &&
+	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
+		pf_addspaces(p, p->width - len_to_print);
+	if (neg)
 		pf_charadd(p, '-');
-	}
+	if (p->flags & PF_WIDTH && p->width >= len_to_print
+	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
+		pf_addzeros(p, p->width - len_to_print);
+	if (p->flags & PF_PRECIS && p->precision > ft_numlen(number))
+		pf_addzeros(p, ft_numlen(number) - p->precision);
+	pf_stradd(p, ft_ltoa(neg ? number * -1 : number));
 }
 
 void		pf_convert_char(t_pfinfo *p, int is_pourcent)

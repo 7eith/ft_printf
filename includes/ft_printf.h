@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/13 14:31:16 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/21 03:08:01 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,6 +85,7 @@ void					convert(t_pfinfo *p);
 void					pf_convert_char(t_pfinfo *p, int is_pourcent);
 void					pf_convert_string(t_pfinfo *p);
 void					pf_convert_decimal(t_pfinfo *p);
+void					pf_convert_dminus(t_pfinfo *p, long number);
 
 /*
 **	srcs/pf_content.c

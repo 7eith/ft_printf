@@ -6,14 +6,14 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 03:03:01 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/21 03:07:22 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		pf_dminus(t_pfinfo *p, long number)
+void		pf_convert_dminus(t_pfinfo *p, long number)
 {
 	const int	neg = number < 0 ? 1 : 0;
 	int			len_to_print;
@@ -49,7 +49,7 @@ void		pf_convert_decimal(t_pfinfo *p)
 	if (!p->flags)
 		return (pf_stradd(p, ft_ltoa(number)));
 	if (p->flags & PF_MINUS)
-		return (pf_dminus(p, number));
+		return (pf_convert_dminus(p, number));
 	if (p->flags & PF_PRECIS && !p->precision && !number)
 		return (pf_addspaces(p, p->width));
 	len_to_print = ft_numlen(number) + neg;

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 23:19:46 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/21 00:50:01 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,27 +37,43 @@ void			debg(t_pfinfo *p)
 
 void		pf_dminus(t_pfinfo *p, long number)
 {
+	const int	neg = number < 0 ? 1 : 0;
+
+	printf("[debug]negative=%d\n", neg);
+	printf("[debug]len to print=%d\n", ft_numlen(number) + neg);
 	if (p->flags & PF_PRECIS && !p->precision && !number)
 		return (pf_addspaces(p, p->width));
 	printf("[debug]precision=%d, width=%d, numlen=%d\n", p->precision, p->width, ft_numlen(number));
 	if (number < 0)
 	{
-		p->width--;
 		number *= -1;
 		pf_charadd(p, '-');
 	}
 	if (p->flags & PF_PRECIS && p->precision && p->precision > ft_numlen(number))
-		pf_addzeros(p, ft_numlen(number) - p->precision);
+		pf_addzeros(p, (ft_numlen(number)) - (p->precision));
 	pf_stradd(p, ft_ltoa(number));
-	if (p->flags & PF_WIDTH)
+	if (p->flags & PF_WIDTH && p->width > ft_numlen(number) && !(p->flags & PF_PRECIS || p->precision))
+		return (pf_addspaces(p, p->width - (ft_numlen(number) + neg)));
+
+	if (p->flags & PF_WIDTH && !(p->width + p->precision <= ft_numlen(number) + neg))
 	{
-		if (p->width <= ft_numlen(number))
-			return ;
-		if (p->width <= p->precision + ft_numlen(number))
-			return (pf_addspaces(p, p->width - (p->precision + ft_numlen(number))));
-		printf("???\n");
-		pf_addspaces(p, p->width - ft_numlen(number));
+		printf("[debug]has PRECISION\n");
+		printf("[debug]printing len=%d\n", p->precision + ft_numlen(number) + neg + p->width);
+		if (p->precision + ft_numlen(number) + neg < p->width)
+		{
+			printf("[debug]p->precision + ft_numlen + neg is =%d < width %d\n", p->precision + ft_numlen(number) + neg, p->width);
+			// pf_addspaces(p, (p->width + p->precision) - ft_numlen(number));
+		}
 	}
+	// if (p->flags & PF_WIDTH && !(p->width <= ft_numlen(number)))
+	// {
+	// 	if (p->width <= ft_numlen(number))
+	// 		return ;
+	// 	if (p->width <= p->precision + ft_numlen(number))
+	// 		return (pf_addspaces(p, (p->width - neg )- (p->precision + ft_numlen(number))));
+	// 	printf("???\n");
+	// 	pf_addspaces(p, p->width - ft_numlen(number));
+	// }
 	// if (p->flags & PF_WIDTH && p->width && p->width - (ft_numlen(number) + p->precision) > 0)
 	// {
 	// 	printf("[debug]calcul=%d\n", p->width - ft_numlen(number));

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 03:07:22 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/21 03:10:05 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,14 +21,11 @@ void		pf_convert_dminus(t_pfinfo *p, long number)
 	if (p->flags & PF_PRECIS && !p->precision && !number)
 		return (pf_addspaces(p, p->width));
 	if (neg)
-	{
-		number *= -1;
 		pf_charadd(p, '-');
-	}
 	if (p->flags & PF_PRECIS && p->precision
 	&& p->precision > ft_numlen(number))
 		pf_addzeros(p, ft_numlen(number) - p->precision);
-	pf_stradd(p, ft_ltoa(number));
+	pf_stradd(p, ft_ltoa(neg ? number * -1 : number));
 	len_to_print = ft_numlen(number) + neg;
 	if (p->precision > ft_numlen(number))
 		len_to_print = p->precision + neg;

@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/18 19:36:25 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/20 16:06:00 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -90,8 +90,8 @@ $(NAME)		: $(OBJS)
 		@echo "\033[90m[\033[32mft_printf\033[90m]\033[32m Successfully compiled ft_printf.\033[0m"
 
 %.o: %.c $(HEADERS) libft/libft.h
-		gcc -I $(HEADERS) -I $(LIBFT_INC) -o $@ -c $< $(FLAGS)
-		@echo "\033[34m$@ $<█\c\033[0m"
+		@gcc -I $(HEADERS) -I $(LIBFT_INC) -o $@ -c $< $(FLAGS)
+		@echo "\033[34m█\c\033[0m"
 
 bonus		:		$(NAME)
 

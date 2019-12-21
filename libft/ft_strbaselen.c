@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_ulltoa_base.c                                 .::    .:/ .      .::   */
+/*   ft_strbaselen.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/05 04:01:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 23:13:18 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/21 23:05:28 by amonteli     #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/21 23:07:20 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_ulltoa_base(unsigned long long n, char *base)
+unsigned long long		ft_strbaselen(unsigned long long n, char *base)
 {
-	char					*str;
-	unsigned long long		i;
+	long unsigned int	len;
 
-	i = ft_strbaselen(n, base);
-	if (!(str = malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	str[i] = 0;
-	if (n == 0)
-		str[0] = '0';
-	while (n)
-	{
-		str[--i] = base[n % ft_strlen(base)];
-		n /= ft_strlen(base);
-	}
-	return (str);
+	len = 1;
+	while (n /= ft_strlen(base))
+		len++;
+	return (len);
 }

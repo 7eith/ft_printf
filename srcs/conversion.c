@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 17:40:22 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/21 03:21:43 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 void			pf_debug_print_flags(t_pfinfo *p)
 {
-	unsigned char flags = p->flags;
+	const unsigned char flags = p->flags;
 
 	if (flags & PF_MINUS)
 		printf("[Flags] Minus\n");
@@ -29,7 +29,7 @@ void			pf_debug_print_flags(t_pfinfo *p)
 		printf("[Flags] Precision\n");
 	if (flags & PF_PLUS)
 		printf("[Flags] Plus\n");
- 	if (flags & PF_SPACE)
+	if (flags & PF_SPACE)
 		printf("[Flags] Space\n");
 	if (flags & PF_HASH)
 		printf("[Flags] Hash\n");

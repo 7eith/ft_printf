@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/03 20:22:32 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/13 14:04:09 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/21 03:20:15 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ static t_pfcontent	*pf_lstnew(char *content, int size)
 	return (list);
 }
 
-static void		pf_lstadd_back(t_pfcontent **alst, t_pfcontent *new)
+static void			pf_lstadd_back(t_pfcontent **alst, t_pfcontent *new)
 {
 	t_pfcontent	*lst;
 
@@ -50,7 +50,7 @@ static void		pf_lstadd_back(t_pfcontent **alst, t_pfcontent *new)
 **	@param:				struct t_pfinfo, int c.
 */
 
-void			pf_charadd(t_pfinfo *p, int c)
+void				pf_charadd(t_pfinfo *p, int c)
 {
 	char	*str;
 
@@ -65,34 +65,7 @@ void			pf_charadd(t_pfinfo *p, int c)
 **	@param:				struct t_pfinfo, string str.
 */
 
-void			pf_stradd(t_pfinfo *p, char *str)
+void				pf_stradd(t_pfinfo *p, char *str)
 {
 	pf_lstadd_back(&p->content, pf_lstnew(str, ft_strlen(str)));
-}
-
-int				pf_add_char(t_pfinfo *p, int c)
-{
-	char	*str;
-
-	if (c != '\0')
-	{
-		str = ft_strdup(" ");
-		str[0] = c;
-	}
-	else
-		str = ft_strdup("");
-	pf_lstadd_back(&p->content, pf_lstnew(str, 1));
-	return (1);
-}
-
-/*
-**	pf_add_content
-**	@description:		add content to chained list who contain output of printf.
-**	@param:				struct t_pfinfo, string str.
-**	@return:			1 parsed or 0 nothing to parse, maybe -1 if error
-*/
-
-void			pf_add_content(t_pfinfo *p, char *str)
-{
-	pf_lstadd_back(&p->content, pf_lstnew(str, 0));
 }

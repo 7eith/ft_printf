@@ -5,3 +5,7 @@ printf.dSYM/
 test-printf/
 printf
 output
+.gitignore
+a.out
+output
+printf

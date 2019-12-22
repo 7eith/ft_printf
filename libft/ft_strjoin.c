@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:04:22 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/05 13:54:46 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/22 04:47:40 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,5 +31,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[++count])
 		tab[s1_size + count] = s2[count];
 	tab[s1_size + count] = '\0';
+	free((char *)s1);
+	free((char *)s2);
 	return (tab);
 }

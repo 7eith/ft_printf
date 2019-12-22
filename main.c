@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 03:27:41 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/22 08:46:23 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -748,6 +748,24 @@ int		main(void)
 	ft_printf("[%-9.p]", (void *)0);
 	dprintf(1, "\n");
 	dprintf(1,"[%-9.p]", (void *)0);
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t%%u\n");
+
+
+	ft_printf("[%-10u]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%-10u]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-10u]", -41);
+	dprintf(1, "\n");
+	dprintf(1,"[%-10u]", -41);
+
 	// printf("lol=%s\n", ft_lltoa_base(32, UP_HEXA));
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");

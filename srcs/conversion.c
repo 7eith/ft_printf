@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 22:42:25 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/22 08:38:39 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,5 +47,7 @@ void			convert(t_pfinfo *p)
 		pf_convert_decimal(p);
 	if (p->type == 'p')
 		pf_convert_pointer(p);
+	if (p->type == 'u')
+		pf_convert_unsigned(p);
 	p->flags = 0;
 }

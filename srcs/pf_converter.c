@@ -6,12 +6,57 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 04:49:31 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/22 08:40:21 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+void		pf_convert_uminus(t_pfinfo *p, unsigned int number)
+{
+	int			len_to_print;
+
+	if (p->flags & PF_PRECIS && !p->precision && !number)
+		return (pf_addspaces(p, p->width));
+	if (p->flags & PF_PRECIS && p->precision
+	&& p->precision > ft_numlen(number))
+		pf_addzeros(p, ft_numlen(number) - p->precision);
+	pf_stradd(p, ft_utoa(number));
+	len_to_print = ft_numlen(number);
+	if (p->precision > ft_numlen(number))
+		len_to_print = p->precision;
+	if (p->flags & PF_WIDTH && p->width > ft_numlen(number) &&
+	!(p->flags & PF_PRECIS || p->precision))
+		return (pf_addspaces(p, p->width - (ft_numlen(number))));
+	if (p->flags & PF_WIDTH && p->width >= len_to_print)
+		return (pf_addspaces(p, p->width - len_to_print));
+}
+
+void		pf_convert_unsigned(t_pfinfo *p)
+{
+	const	unsigned int 	number = va_arg(p->va, unsigned int);
+	int						len_to_print;
+
+	if (!p->flags)
+		return (pf_stradd(p, ft_utoa(number)));
+	if (p->flags & PF_MINUS)
+		return (pf_convert_dminus(p, number));
+	if (p->flags & PF_PRECIS && !p->precision && !number)
+		return (pf_addspaces(p, p->width));
+	len_to_print = ft_numlen(number);
+	if (p->precision > ft_numlen(number))
+		len_to_print = p->precision;
+	if (p->flags & PF_WIDTH && p->width >= len_to_print &&
+	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
+		pf_addspaces(p, p->width - len_to_print);
+	if (p->flags & PF_WIDTH && p->width >= len_to_print
+	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
+		pf_addzeros(p, p->width - len_to_print);
+	if (p->flags & PF_PRECIS && p->precision > ft_numlen(number))
+		pf_addzeros(p, ft_numlen(number) - p->precision);
+	pf_stradd(p, ft_utoa(number));
+}
 
 void		pf_convert_pointer(t_pfinfo *p)
 {

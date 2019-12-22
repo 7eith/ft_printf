@@ -6,13 +6,14 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 02:21:53 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/22 03:27:41 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int		main(void)
 {
@@ -641,6 +642,113 @@ int		main(void)
 	dprintf(1, "\n");
 	dprintf(1,"[%011.10d]", INT32_MAX);
 
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t%%p\n");
+
+	ft_printf("[%p]", (void *)32);
+	dprintf(1, "\n");
+	dprintf(1,"[%p]", (void *)32);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%p]", (void *)-1);
+	dprintf(1, "\n");
+	dprintf(1,"[%p]", (void *)-1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%p]", (void *)1000);
+	dprintf(1, "\n");
+	dprintf(1,"[%p]", (void *)1000);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%p]", (void *)ULONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%p]", (void *)ULONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%p]", (void *)32);
+	dprintf(1, "\n");
+	dprintf(1,"[%p]", (void *)32);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%5p]", (void *)32);
+	dprintf(1, "\n");
+	dprintf(1,"[%5p]", (void *)32);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%4p]", (void *)32);
+	dprintf(1, "\n");
+	dprintf(1,"[%4p]", (void *)32);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-5p]", (void *)32);
+	dprintf(1, "\n");
+	dprintf(1,"[%-5p]", (void *)32);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%1p]", (void *)42);
+	dprintf(1, "\n");
+	dprintf(1,"[%1p]", (void *)42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.p]", (void *)0);
+	dprintf(1, "\n");
+	dprintf(1,"[%.p]", (void *)0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%.p]", (void *)70);
+	dprintf(1, "\n");
+	dprintf(1,"[%.p]", (void *)70);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%9.p]", (void *)0);
+	dprintf(1, "\n");
+	dprintf(1,"[%9.p]", (void *)0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%8.p]", (void *)6969);
+	dprintf(1, "\n");
+	dprintf(1,"[%8.p]", (void *)6969);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-8.p]", (void *)6969);
+	dprintf(1, "\n");
+	dprintf(1,"[%-8.p]", (void *)6969);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-9.p]", (void *)0);
+	dprintf(1, "\n");
+	dprintf(1,"[%-9.p]", (void *)0);
+	// printf("lol=%s\n", ft_lltoa_base(32, UP_HEXA));
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");
 	// printf("printed_size=%d\n", ft_printf("simple printf hello!\n"));

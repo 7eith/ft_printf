@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/21 23:10:43 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/22 00:06:25 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -76,7 +76,7 @@ SRCS 		=		ft_printf.c				\
 					pf_converter.c 			\
 					pf_utils.c				\
 
-FLAGS 		= 		-Wall -Wextra -Werror -g
+FLAGS 		= 		-Wall -Wextra -Werror -g3
 
 OBJS		= 		$(addprefix srcs/, $(SRCS:.c=.o)) $(addprefix libft/, $(LIBFT_SRCS:.c=.o))
 

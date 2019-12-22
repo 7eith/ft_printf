@@ -6,12 +6,31 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 03:10:05 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/22 04:49:31 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+void		pf_convert_pointer(t_pfinfo *p)
+{
+	const	intptr_t	ptr = (intptr_t)va_arg(p->va, void *);
+	char				*str;
+
+	if (p->flags & PF_PRECIS && !ptr)
+		str = ft_strdup("0x");
+	else
+		str = ft_strjoin(ft_strdup("0x"),
+		ft_ulltoa_base((unsigned long long)ptr, LOW_HEXA));
+	if (p->flags & PF_WIDTH && !(p->flags & PF_MINUS)
+	&& p->width > (int)ft_strlen(str))
+		pf_addspaces(p, p->width - ft_strlen(str));
+	pf_stradd(p, str);
+	if (p->flags & PF_WIDTH && p->flags & PF_MINUS
+	&& p->width > (int)ft_strlen(str))
+		pf_addspaces(p, p->width - ft_strlen(str));
+}
 
 void		pf_convert_dminus(t_pfinfo *p, long number)
 {
@@ -88,6 +107,8 @@ void		pf_convert_string(t_pfinfo *p)
 	str = va_arg(p->va, char *);
 	if (!str)
 		str = "(null)";
+	else
+		str = ft_strdup(str);
 	if (!p->flags)
 		return (pf_stradd(p, str));
 	if (p->flags & PF_PRECIS)

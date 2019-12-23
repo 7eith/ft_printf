@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:32:47 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 04:43:56 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 05:56:26 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,12 +65,7 @@ int					ft_print(t_pfinfo *p)
 // 	return (output_size);
 // }
 
-/*
-**	1: create a structure containing all things needed,
-**	2: parse into structure
-**	3:
-*/
-
+// TODO: Leaks, %n, %o %b +#
 int					ft_printf(const char *format, ...)
 {
 	t_pfinfo	p;

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 04:33:45 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 05:06:14 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -838,9 +838,9 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-	ft_printf("[%11.2x]", INT32_MAX);
+	ft_printf("[%11.02x]", INT32_MAX);
 	dprintf(1, "\n");
-	dprintf(1,"[%11.2x]", INT32_MAX);
+	dprintf(1,"[%11.02x]", INT32_MAX);
 
 	printf("\n");
 	printf("\n");
@@ -856,6 +856,22 @@ int		main(void)
 	ft_printf("[%-2.0x]", 0);
 	dprintf(1, "\n");
 	dprintf(1,"[%-2.0x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("|%.046d|", 45);
+	dprintf(1, "\n");
+	dprintf(1,"|%.046d|", 45);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("|%.015s|", "bonjour");
+	dprintf(1, "\n");
+	dprintf(1,"|%.015s|", "bonjour");
+
+
 	// printf("lol=%s\n", ft_lltoa_base(32, UP_HEXA));
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");

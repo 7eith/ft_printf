@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 04:58:10 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 05:20:01 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,6 +70,12 @@ void			pf_convert_hexa(t_pfinfo *p)
 	return (pf_stradd(p, ft_utoa_base(number, (char *)base)));
 }
 
+/*
+**	pf_convert_dminus 	:: static void (struct printf_info, long number)
+**	@description:	converter functions for decimal & integer. with '-' flag.
+**	@params:		struct t_pfinfo *p, long number
+*/
+
 static void		pf_convert_dminus(t_pfinfo *p, long number)
 {
 	const int	neg = number < 0 ? 1 : 0;
@@ -90,6 +96,12 @@ static void		pf_convert_dminus(t_pfinfo *p, long number)
 	if (p->flags & PF_WIDTH && p->width >= len_to_print)
 		return (pf_addspaces(p, p->width - len_to_print));
 }
+
+/*
+**	pf_convert_decimal 	:: static void (struct printf_info)
+**	@description:	converter functions for decimal & integer.
+**	@params:		struct t_pfinfo *p, long number
+*/
 
 void			pf_convert_decimal(t_pfinfo *p)
 {

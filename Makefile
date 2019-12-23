@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/23 04:49:10 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/23 04:53:43 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -75,7 +75,7 @@ SRCS 		=		ft_printf.c				\
 					conversion.c			\
 					pf_converter.c 			\
 					pf_utils.c				\
-					pf_conv.c				\
+					pf_int_converter.c		\
 
 FLAGS 		= 		-Wall -Wextra -Werror -g3
 

@@ -6,57 +6,58 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 04:41:57 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 04:59:13 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		pf_convert_uminus(t_pfinfo *p, unsigned int number)
+static void		pf_convert_uminus(t_pfinfo *p, char *str)
 {
-	int			len_to_print;
+	int				len;
 
 	if (p->flags & PF_PRECIS && p->precision
-	&& p->precision > ft_numlen(number))
-		pf_addzeros(p, ft_numlen(number) - p->precision);
-	pf_stradd(p, ft_utoa_base(number, DEC_BASE));
-	len_to_print = ft_numlen(number);
-	if (p->precision > ft_numlen(number))
-		len_to_print = p->precision;
-	if (p->flags & PF_WIDTH && p->width > ft_numlen(number) &&
+	&& p->precision > (int)ft_strlen(str))
+		pf_addzeros(p, (int)ft_strlen(str) - p->precision);
+	pf_stradd(p, str);
+	len = ft_strlen(str);
+	if (p->precision > (int)ft_strlen(str))
+		len = p->precision;
+	if (p->flags & PF_WIDTH && p->width > (int)ft_strlen(str) &&
 	!(p->flags & PF_PRECIS || p->precision))
-		return (pf_addspaces(p, p->width - (ft_numlen(number))));
-	if (p->flags & PF_WIDTH && p->width >= len_to_print)
-		return (pf_addspaces(p, p->width - len_to_print));
+		return (pf_addspaces(p, p->width - (ft_strlen(str))));
+	if (p->flags & PF_WIDTH && p->width >= len)
+		return (pf_addspaces(p, p->width - len));
 }
 
-void		pf_convert_unsigned(t_pfinfo *p)
+void			pf_convert_unsigned(t_pfinfo *p)
 {
-	const	unsigned	int number = va_arg(p->va, unsigned int);
-	int						len_to_print;
+	const	int		number = va_arg(p->va, unsigned int);
+	const	char	*str = ft_utoa_base(number, DEC_BASE);
+	int				len;
 
 	if (!p->flags)
-		return (pf_stradd(p, ft_utoa(number)));
+		return (pf_stradd(p, ft_utoa_base(number, DEC_BASE)));
 	if (p->flags & PF_PRECIS && !p->precision && !number)
 		return (pf_addspaces(p, p->width));
 	if (p->flags & PF_MINUS)
-		return (pf_convert_dminus(p, number));
-	len_to_print = ft_numlen(number);
-	if (p->precision > ft_numlen(number))
-		len_to_print = p->precision;
-	if (p->flags & PF_WIDTH && p->width >= len_to_print &&
+		return (pf_convert_uminus(p, (char *)str));
+	len = ft_strlen(str);
+	if (p->precision > (int)ft_strlen(str))
+		len = p->precision;
+	if (p->flags & PF_WIDTH && p->width >= len &&
 	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
-		pf_addspaces(p, p->width - len_to_print);
-	if (p->flags & PF_WIDTH && p->width >= len_to_print
+		pf_addspaces(p, p->width - len);
+	if (p->flags & PF_WIDTH && p->width >= len
 	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
-		pf_addzeros(p, p->width - len_to_print);
-	if (p->flags & PF_PRECIS && p->precision > ft_numlen(number))
-		pf_addzeros(p, ft_numlen(number) - p->precision);
-	pf_stradd(p, ft_utoa_base(number, DEC_BASE));
+		pf_addzeros(p, p->width - len);
+	if (p->flags & PF_PRECIS && p->precision > (int)ft_strlen(str))
+		pf_addzeros(p, ft_strlen(str) - p->precision);
+	return (pf_stradd(p, ft_utoa_base(number, DEC_BASE)));
 }
 
-void		pf_convert_pointer(t_pfinfo *p)
+void			pf_convert_pointer(t_pfinfo *p)
 {
 	const	intptr_t	ptr = (intptr_t)va_arg(p->va, void *);
 	char				*str;
@@ -75,7 +76,7 @@ void		pf_convert_pointer(t_pfinfo *p)
 		pf_addspaces(p, p->width - ft_strlen(str));
 }
 
-void		pf_convert_char(t_pfinfo *p, int is_pourcent)
+void			pf_convert_char(t_pfinfo *p, int is_pourcent)
 {
 	const char	c = is_pourcent ? '%' : va_arg(p->va, int);
 
@@ -91,7 +92,7 @@ void		pf_convert_char(t_pfinfo *p, int is_pourcent)
 	pf_charadd(p, c);
 }
 
-void		pf_convert_string(t_pfinfo *p)
+void			pf_convert_string(t_pfinfo *p)
 {
 	char	*str;
 

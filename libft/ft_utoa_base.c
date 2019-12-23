@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 22:44:28 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 22:44:49 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 04:42:57 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 char		*ft_utoa_base(unsigned int n, char *base)
 {
 	char					*str;
-	unsigned int 			i;
+	unsigned	int			i;
 
 	i = ft_strbaselen(n, base);
 	if (!(str = malloc(sizeof(char) * (i + 1))))

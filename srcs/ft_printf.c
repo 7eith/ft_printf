@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:32:47 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 08:26:58 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 04:43:56 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ static	t_pfinfo	*ft_initialise_pf_struct(t_pfinfo *list, const char *format)
 int					ft_print(t_pfinfo *p)
 {
 	size_t			output_size;
-	t_pfcontent 	*content;
+	t_pfcontent		*content;
 
 	output_size = 0;
 	content = p->content;

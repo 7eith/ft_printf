@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/22 06:39:06 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/23 04:49:10 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -115,6 +115,5 @@ run			:		all
 		@./printf
 
 norme		:
-		@echo "\033[91m"
-		@norminette srcs/*.c includes/*.h libft/*.c libft/*.h
-		@echo "\033[0m"
+		@norminette srcs/*.c includes/*.h libft/*.c libft/*.h | grep -v "C++ comment"
+		@echo "\033[91m[Warning!] Not showing all C++ comment!\033[0m"

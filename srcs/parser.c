@@ -6,12 +6,56 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/21 03:21:19 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 01:15:38 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+void				debug__print_structure(t_pfinfo *p)
+{
+	struct s_pfcontent	*list;
+
+	list = p->content;
+	printf("======= DEBUG =======\n");
+	printf("format=%s\n", p->format);
+	// printf("flags=%d\n", p->flags);
+	printf("width=%d\n", p->width);
+	printf("precision=%d\n", p->precision);
+	printf("type=%c\n", p->type);
+	printf("reste=%s\n\n", p->format + p->count);
+	if (!list)
+		printf("[Error]empty pf_content...\n");
+	// while (list)
+	// {
+	// 	printf("[debug]size=%zu - content=%s\n", list->size, list->content);
+	// 	list = list->next;
+	// }
+	printf("======================\n");
+}
+
+void			debug_print_flags(t_pfinfo *p)
+{
+	unsigned char flags = p->flags;
+
+	if (flags & PF_MINUS)
+		printf("[Flags] Minus\n");
+	if (flags & PF_ZERO)
+		printf("[Flags] Zero\n");
+	if (flags & PF_STAR)
+		printf("[Flags] Star\n");
+	if (flags & PF_WIDTH)
+		printf("[Flags] Width\n");
+	if (flags & PF_PRECIS)
+		printf("[Flags] Precision\n");
+	if (flags & PF_PLUS)
+		printf("[Flags] Plus\n");
+ 	if (flags & PF_SPACE)
+		printf("[Flags] Space\n");
+	if (flags & PF_HASH)
+		printf("[Flags] Hash\n");
+}
 
 static	int			pf_is_flag(char c)
 {
@@ -100,4 +144,6 @@ void				parse(t_pfinfo *p)
 		p->flags &= ~PF_PRECIS;
 	p->type = p->format[p->count];
 	p->count++;
+	// debug__print_structure(p);
+	// debug_print_flags(p);
 }

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 08:46:23 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 04:33:45 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -752,20 +752,110 @@ int		main(void)
 	printf("\n");
 
 	printf("__________________________________________________________________\n");
-	printf("\t\t\t\t%%u\n");
+	printf("\t\t\t\t%%x\n");
 
-
-	ft_printf("[%-10u]", 0);
+	ft_printf("[%x]", 1694);
 	dprintf(1, "\n");
-	dprintf(1,"[%-10u]", 0);
+	dprintf(1,"[%x]", 1694);
 
 	printf("\n");
 	printf("\n");
 
-	ft_printf("[%-10u]", -41);
+	ft_printf("[%X]", 1694);
 	dprintf(1, "\n");
-	dprintf(1,"[%-10u]", -41);
+	dprintf(1,"[%X]", 1694);
 
+	printf("\n");
+	printf("\n");
+
+	ft_printf("precision[%.*x]", 10, -123);
+	printf("\n");
+	printf("precision[%.*x]", 10, -123);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("width[%*x]", 10, -123);
+	printf("\n");
+	printf("width[%*x]", 10, -123);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("2.x[%0.2x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"2.x[%0.2x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%2.1x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%2.1x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%010.1x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%010.1x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%010.2x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%010.2x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%03.0x]", -1);
+	dprintf(1, "\n");
+	dprintf(1,"[%03.0x]", -1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%03.1x]", -1);
+	dprintf(1, "\n");
+	dprintf(1,"[%03.1x]", -1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%11.0x]", INT32_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%11.0x]", INT32_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%11.1x]", INT32_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%11.1x]", INT32_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%11.2x]", INT32_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%11.2x]", INT32_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	// parser zobed.. with # its printing everything ..
+	ft_printf( "[%#-*.10x]", 5, INT32_MAX);
+	dprintf(1, "\n");
+	dprintf(1, "[%#-*.10x]", 5, INT32_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%-2.0x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%-2.0x]", 0);
 	// printf("lol=%s\n", ft_lltoa_base(32, UP_HEXA));
 	// Without any flags
 	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");

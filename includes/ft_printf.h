@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 06:56:07 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 01:14:53 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@
 # include "../libft/libft.h"
 
 # define PF_TYPES 		"cspdiuxX%"
-# define PF_FLAGS		"-0+ "
+# define PF_FLAGS		"-0+# "
 
 # define DEC_BASE 		"0123456789"
 # define LOW_HEXA 		"0123456789abcdef"
@@ -90,6 +90,7 @@ void					pf_convert_dminus(t_pfinfo *p, long number);
 void					pf_convert_pointer(t_pfinfo *p);
 
 void					pf_convert_unsigned(t_pfinfo *p);
+void					pf_convert_hexa(t_pfinfo *p);
 
 /*
 **	srcs/pf_content.c

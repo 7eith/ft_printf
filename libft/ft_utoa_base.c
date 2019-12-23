@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_lltoa_base.c                                  .::    .:/ .      .::   */
+/*   ft_utoa_base.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/05 04:01:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 22:41:14 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/22 22:44:28 by amonteli     #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/22 22:44:49 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_lltoa_base(long long n, char *base)
+char		*ft_utoa_base(unsigned int n, char *base)
 {
-	int		size;
-	int		neg;
-	char	*tab;
+	char					*str;
+	unsigned int 			i;
 
-	size = ft_numlen(n);
-	neg = 0;
-	if (n < 0)
-	{
-		n = -n;
-		neg = 1;
-	}
-	if (!(tab = (char *)malloc(sizeof(char) * (size + 1 + neg))))
+	i = ft_strbaselen(n, base);
+	if (!(str = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	if (neg)
-		tab[0] = '-';
-	tab[size + neg] = '\0';
-	while (size)
+	str[i] = 0;
+	if (n == 0)
+		str[0] = '0';
+	while (n)
 	{
-		tab[size - (neg ? 0 : 1)] = base[n % ft_strlen(base)];
-		n = n / ft_strlen(base);
-		size--;
+		str[--i] = base[n % ft_strlen(base)];
+		n /= ft_strlen(base);
 	}
-	return (tab);
+	return (str);
 }

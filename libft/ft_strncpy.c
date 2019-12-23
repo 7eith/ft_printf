@@ -6,10 +6,12 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 17:14:11 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 17:14:18 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 06:27:27 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
@@ -28,5 +30,6 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		count++;
 		n--;
 	}
+	free(src);
 	return (dest);
 }

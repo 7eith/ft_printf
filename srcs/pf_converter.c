@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 04:59:13 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 06:24:25 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -99,8 +99,7 @@ void			pf_convert_string(t_pfinfo *p)
 	str = va_arg(p->va, char *);
 	if (!str)
 		str = "(null)";
-	else
-		str = ft_strdup(str);
+	str = ft_strdup(str);
 	if (!p->flags)
 		return (pf_stradd(p, str));
 	if (p->flags & PF_PRECIS)

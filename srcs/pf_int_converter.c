@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 05:20:01 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/23 06:25:56 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ void			pf_convert_hexa(t_pfinfo *p)
 	int				len;
 
 	if (!p->flags)
-		return (pf_stradd(p, ft_utoa_base(number, (char *)base)));
+		return (pf_stradd(p, (char *)str));
 	if (p->flags & PF_PRECIS && !p->precision && !number)
 		return (pf_addspaces(p, p->width));
 	if (p->flags & PF_MINUS)
@@ -67,7 +67,7 @@ void			pf_convert_hexa(t_pfinfo *p)
 		pf_addzeros(p, p->width - len);
 	if (p->flags & PF_PRECIS && p->precision > (int)ft_strlen(str))
 		pf_addzeros(p, ft_strlen(str) - p->precision);
-	return (pf_stradd(p, ft_utoa_base(number, (char *)base)));
+	return (pf_stradd(p, (char *)str));
 }
 
 /*

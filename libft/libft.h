@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/12 14:03:52 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/22 22:45:11 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/24 17:36:08 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,6 +70,10 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 void (*del)(void *));
 
+/*
+** Libft add for printf
+*/
+
 char				*ft_strncpy(char *dest, char *src, unsigned int n);
 int					ft_strchr_len(const char *s, int c);
 char				*ft_lltoa_base(long long n, char *base);
@@ -79,5 +83,7 @@ char				*ft_ltoa(long number);
 char				*ft_utoa(unsigned int n);
 char				*ft_ulltoa_base(unsigned long long number, char *base);
 char				*ft_utoa_base(unsigned int n, char *base);
+char				*ft_strreplace
+(const char *str, char *target, char *substitute);
 
 #endif

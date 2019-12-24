@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/24 17:08:45 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/24 17:16:14 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -102,12 +102,7 @@ void					pf_stradd(t_pfinfo *p, char *str);
 **	srcs/pf_utilities.c
 */
 
-char					*pf_create_zero_string(int width);
-char					*pf_create_zero_string(int width);
 void					pf_addspaces(t_pfinfo *p, int width);
 void					pf_addzeros(t_pfinfo *p, int width);
-
-char					*ft_strreplace
-(const char *str, char *target, char *substitute);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/23 05:13:35 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/24 17:37:33 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -67,10 +67,10 @@ LIBFT_SRCS	=		ft_atoi.c				\
 					ft_ltoa.c				\
 					ft_ulltoa_base.c		\
 					ft_strbaselen.c			\
+					ft_strreplace.c			\
 
 SRCS 		=		ft_printf.c				\
 					parser.c				\
-					ft_strreplace.c			\
 					pf_content_manager.c	\
 					conversion.c			\
 					pf_converter.c 			\
@@ -87,7 +87,6 @@ all			: 		$(NAME)
 
 $(NAME)		: $(OBJS)
 		@make -C libft
-		@cp libft/libft.a $(NAME)
 		@ar rcs $(NAME) $(OBJS) $(LIB)
 		@echo "\033[90m[\033[32mft_printf\033[90m]\033[32m Successfully compiled ft_printf.\033[0m"
 

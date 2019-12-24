@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:32:47 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 06:23:48 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/24 17:01:31 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,30 +25,10 @@ static	t_pfinfo	*ft_initialise_pf_struct(t_pfinfo *list, const char *format)
 	return (list);
 }
 
-// int					ft_print(t_pfinfo *p)
-// {
-// 	size_t			output_size;
-// 	t_pfcontent		*content;
-
-// 	output_size = 0;
-// 	content = p->content;
-// 	while (content)
-// 	{
-// 		write(1, content->content, content->size);
-// 		output_size += content->size;
-// 		content = content->next;
-// 	}
-// 	return (output_size);
-// }
-
-/*
-** for print and free
-*/
-
 int					ft_print(t_pfinfo *p)
 {
 	size_t			output_size;
-	t_pfcontent 	*content;
+	t_pfcontent		*content;
 	t_pfcontent		*next;
 
 	output_size = 0;
@@ -65,7 +45,6 @@ int					ft_print(t_pfinfo *p)
 	return (output_size);
 }
 
-// TODO: Leaks, %n, %o %b +#
 int					ft_printf(const char *format, ...)
 {
 	t_pfinfo	p;

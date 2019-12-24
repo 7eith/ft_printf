@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 06:30:03 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/24 16:56:47 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -860,6 +860,13 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
+	ft_printf("[%-10.0x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%-10.0x]", 0);
+
+	printf("\n");
+	printf("\n");
+
 	ft_printf("|%.046d|", 45);
 	dprintf(1, "\n");
 	dprintf(1,"|%.046d|", 45);
@@ -871,167 +878,4 @@ int		main(void)
 	dprintf(1, "\n");
 	dprintf(1,"|%.015s|", "bonjour");
 
-
-	// printf("lol=%s\n", ft_lltoa_base(32, UP_HEXA));
-	// Without any flags
-	// printf("-------------[ 0/X - WITHOUT FLAGS ]-------------\n");
-	// printf("printed_size=%d\n", ft_printf("simple printf hello!\n"));
-	// printf("printed_size=%d\n", printf("simple printf hello!\n"));
-
-	// printf("printed_size=%d\n", ft_printf("salut %c", '\0'));
-
-	// ft_printf("salut %c\n", '\0');
-	// printf("salut %c\n", '\0');
-
-	// printf("salut %c", '\0');
-
-
-	// printf("-------------[ 1/X - FLAGS %% ]-------------\n");
-
-	// ft_printf("simple printf hello %% !\n");
-	// printf("simple printf hello %%!\n");
-
-	// printf("-------------[ 2/X - FLAGS %% ]-------------\n");
-
-	// ft_printf("salut %s", "ca vaedsxz?");
-
-	// printf("-------------[ 3/X - WIDTH ]-------------\n");
-
-	// ft_printf("[minepf]%*s\n", 15, "123456789");
-	//    printf("[printf]%*s\n", 15, "123456789");
-
-	// printf("\n\n-------------[ 3.5/X - WIDTH ]-------------\n\n");
-
-
-	// ft_printf("[minepf]%123s\n", "123456789atoi");
-	//    printf("[printf]%123s\n", "123456789atoi");
-
-	// printf("\n\n-------------[ 4/X - PRECISION ]-------------\n");
-
-	// ft_printf("[minepf]%.500s\n", "123456789atoi");
-	//    printf("[printf]%.500s\n", "123456789atoi");
-
-	// printf("\n\n-------------[ 4.5/X - PRECISION ]-------------\n");
-
-	// ft_printf("[minepf]%.*s\n", 9, "123456789atoi");
-	//    printf("[printf]%.*s\n", 9, "123456789atoi");
-
-
-	// printf("\n\n-------------[ 5/X - WIDTH & PRECISION ]-------------\n");
-
-	// ft_printf("[minepf]%50.*s\n", 9, "123456789atoi");
-	//    printf("[printf]%50.*s\n", 9, "123456789atoi");
-
-	// ft_printf("[minepf]%*.*s\n", 15, 9, "123456789atoi");
-	//    printf("[printf]%*.*s\n", 15, 9, "123456789atoi");
-
-	// ft_printf("[minepf]%50.500s\n", "123456789atoi");
-	//    printf("[printf]%50.500s\n", "123456789atoi");
-
-
-	// ft_printf("[my_printf]%5s", "Hello");
-	//    printf("[df_printf]%5s", "Hello");
-
-	// ft_printf("%*s", -1000, "");
-
-	// printf("\n");
-	// printf("\n");
-
-	// 	ft_printf("[%.s]", 42);
-	// printf("\n");
-	//    	   printf("[%.s]", 42);
-
-	// ft_printf("[my_printf]%-*smec\n", 50, "salut");
-	//    printf("[df_printf]%-*smec\n", 50, "salut");
-
-	//    printf("%*s", -1000, "");
-
-
-
-	// ft_printf("[my_printf]%-smec\n", "just minus");
-	//    printf("[df_printf]%-smec\n", "just minus");
-
-	// // printf("\n");
-
-
-	// // printf("\n");
-
-	// ft_printf("[my_printf]%*smec\n", 20, "salut2");
-	//    printf("[df_printf]%*smec\n", 20, "salut2");
-
-	// // printf("\n");
-
-	// ft_printf("[my_printf]%-.*sprecision\n", 0, "should not print");
-	//    printf("[df_printf]%-.*sprecision\n", 0, "should not print");
-
-	// ft_printf("[my_printf]%-.*sprecision\n", 10, NULL);
-	//    printf("[df_printf]%-.*sprecision\n", 10, NULL);
-
-	// ft_printf("%-6.10s\n", "salut");
-	//    printf("\n");
-	//    printf("%-6.10s\n", "salut");
-
-	// ft_printf("[my_printf]%*s others flags=%.*d\n", 10, "salut", 50, 69);
-	//    printf("\n");
-	//    printf("[printf]%*s others flags=%4.*d\n", 10, "salut", 5, 69);
-
-	// printf("\n\n-------------[ 4.5/X - PRECISION ]-------------\n");
-
-	// ft_printf("%s\n", 35, "this a flags star with a 100 precision not seeing this bro");
-	//    printf("%.*s\n", 35, "this a flags star with a 100 precision not seeing this bro");
-
-	// printf("hello akhy %.*s\n", 21, "salut");
-
-	// printf("hello akhy % -*s\n", 21, "salut");
-
-	// ft_printf("hello akhy %-*.*s\n", 21, 45, "salut");
-	// printf("hello akhy %-*.*s\n", 21, 45, "salut");
-
-//
-	// ft_printf("integer% -*d\n", 21, 420);
-	// printf("integer%*d\n", 201, 420);
-
-	// printf("%'i", -10000);
-	// printf("%*.1s\n", 700, "salut");
-	// char	*str;
-	// char	*ret;
-
-	// str = "ok, should result a %c";
-	// printf("%-*d\n", 5, 10);
-	// ft_printf("string=%s, nbr=%d\n", "str", -2147483647);
-
-	// ret = ft_strreplace(str, "%c", "s");
-	// printf("[ft_strreplace]%s\n", ret);
-	// free(ret);
-
-	// int count;
-
-	// count = 0;
-	// while (PF_FLAGS[count])
-	// {
-	// 	printf("flag=%c\n", PF_FLAGS[count]);
-	// 	count++;
-	// }
-
-	// unsigned char	flags = 0;
-
-	// printf("%s", "c");
-
-	// flags |= PF_WIDTH;
-
-	// if (flags & PF_WIDTH)
-	// 	printf("has width");
-
-	// flags = 0;
-
-	// "% 0 '+-#*.*", 50
 }
-// bitwise operator
-	// unsigned char flags = 0;
-	// flags |= PF_ZERO;
-	// flags &= ~(1 << 6);
-
-	// if (flags & PF_ZERO)
-	// 	printf("IL EST LA");
-	// flags &= ~PF_ZERO;
-	// printf("%d\n", flags);

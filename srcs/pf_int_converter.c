@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 06:25:56 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/24 17:08:21 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,17 +43,19 @@ static void		pf_convert_hexaminus(t_pfinfo *p, char *str)
 **	@params:		struct t_pfinfo *p
 */
 
-void			pf_convert_hexa(t_pfinfo *p)
+void			pf_convert_hexa(t_pfinfo *p, char *base)
 {
-	const	char	*base = p->type == 'x' ? LOW_HEXA : UP_HEXA;
 	const	int		number = va_arg(p->va, unsigned int);
-	const	char	*str = ft_utoa_base(number, (char *)base);
+	const	char	*str = ft_utoa_base(number, base);
 	int				len;
 
 	if (!p->flags)
 		return (pf_stradd(p, (char *)str));
 	if (p->flags & PF_PRECIS && !p->precision && !number)
+	{
+		free((char *)str);
 		return (pf_addspaces(p, p->width));
+	}
 	if (p->flags & PF_MINUS)
 		return (pf_convert_hexaminus(p, (char *)str));
 	len = ft_strlen(str);

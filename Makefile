@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/25 11:43:21 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/25 13:30:17 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -70,9 +70,9 @@ LIBFT_SRCS	=		ft_atoi.c				\
 					ft_strreplace.c			\
 
 SRCS 		=		ft_printf.c				\
-					parser.c				\
+					pf_parser.c				\
 					pf_content_manager.c	\
-					conversion.c			\
+					pf_conversion.c			\
 					pf_converter.c 			\
 					pf_utils.c				\
 					pf_int_converter.c		\

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 11:55:00 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 18:38:41 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -897,9 +897,80 @@ int		main(void)
 	dprintf(1,"[%d]", pf_ptr);
 
 	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t%%l modificator\n");
+
+	ft_printf("[%ld]", LONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%ld]", LONG_MAX);
+
+	printf("\n");
 	printf("\n");
 
-	dprintf(1, "%d", ft_printf("[%n]", NULL));
+	ft_printf("[%lld]", __LONG_LONG_MAX__);
 	dprintf(1, "\n");
-	dprintf(1, "%d", dprintf(1,"[%n]", NULL));
+	dprintf(1,"[%lld]", __LONG_LONG_MAX__);
+
+	printf("\n");
+	printf("\n");
+
+	#include <locale.h>
+
+	setlocale(LC_ALL, "en_US");
+	printf("[%'d]", 10000);
+	printf("\n");
+	ft_printf("[%'d]", 10000);
+
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t#\n");
+
+	ft_printf("[%#x]", 9);
+	dprintf(1, "\n");
+	dprintf(1,"[%#x]", 9);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#5x]", 9);
+	dprintf(1, "\n");
+	dprintf(1,"[%#5x]", 9);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("p[%#.5x]", 9);
+	dprintf(1, "\n");
+	dprintf(1,"p[%#.5x]", 9);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("p[%#-15.5x]", 9);
+	dprintf(1, "\n");
+	dprintf(1,"p[%#-15.5x]", 9);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("p[%#-.5x]", 9);
+	dprintf(1, "\n");
+	dprintf(1,"p[%#-.5x]", 9);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("p[%#10.5x]", 9);
+	dprintf(1, "\n");
+	dprintf(1,"p[%#10.5x]", 9);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("p[%#-10x]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"p[%#-10x]", 42);
+
 }

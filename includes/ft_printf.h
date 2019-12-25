@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 11:44:06 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 15:09:11 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@
 
 # define PF_TYPES 		"cspdiuxX%"
 # define PF_FLAGS		"-0+# "
+# define PF_MF			"lzh"
 
 # define DEC_BASE 		"0123456789"
 # define LOW_HEXA 		"0123456789abcdef"
@@ -40,6 +41,11 @@
 # define PF_PLUS		(1 << 5)
 # define PF_SPACE		(1 << 6)
 # define PF_HASH		(1 << 7)
+# define PF_L			(1 << 8)
+# define PF_LL			(1 << 9)
+# define PF_H			(1 << 10)
+# define PF_HH			(1 << 11)
+# define PF_Z			(1 << 12)
 
 /*
 **	flags:			encoded with bitwise check define at top
@@ -54,7 +60,7 @@
 
 typedef	struct			s_pfinfo
 {
-	unsigned char		flags;
+	short				flags;
 	int					width;
 	int					precision;
 	int					type;

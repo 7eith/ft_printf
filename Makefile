@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/25 13:30:17 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/25 17:51:10 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -88,6 +88,7 @@ all			: 		$(NAME)
 
 $(NAME)		: $(OBJS)
 		@make -C libft
+		@cp libft/libft.a $(NAME)
 		@ar rcs $(NAME) $(OBJS) $(LIB)
 		@echo "\033[90m[\033[32mft_printf\033[90m]\033[32m Successfully compiled ft_printf.\033[0m"
 
@@ -110,7 +111,7 @@ fclean		:		clean
 re			:		fclean all
 
 run			:		all
-		@gcc -Wall -Werror -Wextra -Wformat=0 -g libftprintf.a main.c -o printf
+		@gcc -Wall -Werror -Wextra -g libftprintf.a main.c -o printf
 		@clear
 		@./printf
 

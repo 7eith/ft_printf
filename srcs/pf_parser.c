@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   parser.c                                         .::    .:/ .      .::   */
+/*   pf_parser.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/23 05:14:03 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 18:34:33 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,7 +55,6 @@ void				parse_flags(t_pfinfo *p)
 **	parse_size(struct printf_infos)
 **	@description:		parse size and put in @param
 **	@param:				struct t_pfinfo
-**  ugly shit...
 */
 
 void				parse_size(t_pfinfo *p)
@@ -86,12 +85,39 @@ void				parse_size(t_pfinfo *p)
 	}
 }
 
+void				pf_parse_modificator(t_pfinfo *p)
+{
+	while (p->format[p->count] && ft_strchr(PF_MF, p->format[p->count]))
+	{
+		if (p->format[p->count] == 'l')
+		{
+			if (p->format[++p->count] == 'l')
+				p->flags |= PF_LL;
+			else
+				p->flags |= PF_L;
+		}
+		if (p->format[p->count] == 'h')
+		{
+			if (p->format[++p->count] == 'h')
+				p->flags |= PF_HH;
+			else
+				p->flags |= PF_H;
+		}
+		if (p->format[p->count] == 'z')
+			p->flags |= PF_Z;
+		p->count++;
+	}
+	p->type = p->format[p->count];
+	p->count++;
+}
+
 void				parse(t_pfinfo *p)
 {
 	if (p->format[p->count] == '%')
 		p->count++;
 	parse_flags(p);
 	parse_size(p);
+	pf_parse_modificator(p);
 	if (p->width < 0)
 	{
 		p->width *= -1;
@@ -99,6 +125,4 @@ void				parse(t_pfinfo *p)
 	}
 	if (p->precision < 0)
 		p->flags &= ~PF_PRECIS;
-	p->type = p->format[p->count];
-	p->count++;
 }

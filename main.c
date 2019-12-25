@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/24 16:56:47 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 11:55:00 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -845,7 +845,6 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-	// parser zobed.. with # its printing everything ..
 	ft_printf( "[%#-*.10x]", 5, INT32_MAX);
 	dprintf(1, "\n");
 	dprintf(1, "[%#-*.10x]", 5, INT32_MAX);
@@ -878,4 +877,29 @@ int		main(void)
 	dprintf(1, "\n");
 	dprintf(1,"|%.015s|", "bonjour");
 
+	printf("\n");
+
+	printf("__________________________________________________________________\n");
+	printf("\t\t\t\t%%n\n");
+
+	int	ptr;
+	int pf_ptr;
+
+	ft_printf("[%n]", &ptr);
+	dprintf(1, "\n");
+	dprintf(1,"[%n]", &pf_ptr);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%d]", ptr);
+	dprintf(1, "\n");
+	dprintf(1,"[%d]", pf_ptr);
+
+	printf("\n");
+	printf("\n");
+
+	dprintf(1, "%d", ft_printf("[%n]", NULL));
+	dprintf(1, "\n");
+	dprintf(1, "%d", dprintf(1,"[%n]", NULL));
 }

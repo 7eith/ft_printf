@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 18:44:35 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 18:51:43 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,12 +24,14 @@ static void		pf_convert_hexaminus(t_pfinfo *p, char *str)
 	int				len;
 
 	if (p->flags & PF_HASH)
-		pf_stradd(p, ft_strdup("0x"));
+		pf_stradd(p, p->type == 'X' ? ft_strdup("0X") : ft_strdup("0x"));
 	if (p->flags & PF_PRECIS && p->precision
 	&& p->precision > (int)ft_strlen(str))
 		pf_addzeros(p, (int)ft_strlen(str) - p->precision);
 	pf_stradd(p, str);
 	len = p->precision > (int)ft_strlen(str) ? p->precision : ft_strlen(str);
+	if (p->flags & PF_HASH)
+		p->width -= 2;
 	if (p->flags & PF_WIDTH && p->width > (int)ft_strlen(str) &&
 	!(p->flags & PF_PRECIS || p->precision))
 		return (pf_addspaces(p, p->width - (ft_strlen(str))));
@@ -59,9 +61,12 @@ void			pf_convert_hexa(t_pfinfo *p, char *base)
 	if (p->flags & PF_MINUS)
 		return (pf_convert_hexaminus(p, (char *)str));
 	len = p->precision > (int)ft_strlen(str) ? p->precision : ft_strlen(str);
+	len += p->flags & PF_HASH ? 2 : 0;
 	if (p->flags & PF_WIDTH && p->width >= len &&
 	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
 		pf_addspaces(p, p->width - len);
+	if (p->flags & PF_HASH)
+		pf_stradd(p, ft_strdup("0x"));
 	if (p->flags & PF_WIDTH && p->width >= len
 	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
 		pf_addzeros(p, p->width - len);

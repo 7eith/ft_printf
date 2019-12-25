@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/24 17:38:36 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 11:44:03 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,5 +29,7 @@ void			convert(t_pfinfo *p)
 		pf_convert_hexa(p, p->type == 'x' ? LOW_HEXA : UP_HEXA);
 	if (p->type == 'u')
 		pf_convert_unsigned(p);
+	if (p->type == 'n')
+		pf_bind_ptr(p);
 	p->flags = 0;
 }

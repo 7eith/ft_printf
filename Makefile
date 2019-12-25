@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/24 17:37:33 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/25 11:43:21 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -76,6 +76,7 @@ SRCS 		=		ft_printf.c				\
 					pf_converter.c 			\
 					pf_utils.c				\
 					pf_int_converter.c		\
+					bonus/pf_bonus.c		\
 
 FLAGS 		= 		-Wall -Wextra -Werror -g3
 
@@ -109,10 +110,9 @@ fclean		:		clean
 re			:		fclean all
 
 run			:		all
-		@gcc -Wall -Werror -Wextra -g libftprintf.a main.c -o printf
+		@gcc -Wall -Werror -Wextra -Wformat=0 -g libftprintf.a main.c -o printf
 		@clear
 		@./printf
 
 norme		:
-		@norminette srcs/*.c includes/*.h libft/*.c libft/*.h
-		@echo "\033[91m[Warning!] Not showing all C++ comment!\033[0m"
+		@norminette srcs/*.c srcs/bonus/*.c includes/*.h libft/*.c libft/*.h

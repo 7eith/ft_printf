@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/24 17:38:44 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 11:44:06 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,5 +104,11 @@ void					pf_stradd(t_pfinfo *p, char *str);
 
 void					pf_addspaces(t_pfinfo *p, int width);
 void					pf_addzeros(t_pfinfo *p, int width);
+
+/*
+**	srcs/bonus/pf_bonus.c
+*/
+
+void					pf_bind_ptr(t_pfinfo *p);
 
 #endif

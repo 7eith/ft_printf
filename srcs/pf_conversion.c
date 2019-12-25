@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   conversion.c                                     .::    .:/ .      .::   */
+/*   pf_conversion.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 11:44:03 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 19:22:48 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,8 @@ void			convert(t_pfinfo *p)
 	if (p->type == 'p')
 		pf_convert_pointer(p);
 	if (p->type == 'x' || p->type == 'X')
-		pf_convert_hexa(p, p->type == 'x' ? LOW_HEXA : UP_HEXA);
+		pf_convert_hexa(p, p->type == 'x' ? LOW_HEXA : UP_HEXA,
+		va_arg(p->va, unsigned int));
 	if (p->type == 'u')
 		pf_convert_unsigned(p);
 	if (p->type == 'n')

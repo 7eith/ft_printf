@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 15:09:11 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 19:23:25 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,7 +95,7 @@ void					pf_convert_decimal(t_pfinfo *p);
 void					pf_convert_pointer(t_pfinfo *p);
 
 void					pf_convert_unsigned(t_pfinfo *p);
-void					pf_convert_hexa(t_pfinfo *p, char *base);
+void					pf_convert_hexa(t_pfinfo *p, char *base, int number);
 
 /*
 **	srcs/pf_content.c

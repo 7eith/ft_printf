@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 18:49:24 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/25 18:59:48 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -972,5 +972,12 @@ int		main(void)
 	ft_printf("[%#-10X]", 42);
 	dprintf(1, "\n");
 	dprintf(1,"[%#-10X]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#10X]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%#10X]", 0);
 
 }

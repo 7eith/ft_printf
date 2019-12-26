@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 11:54:45 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 17:22:15 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,11 +31,10 @@ static void		pf_convert_uminus(t_pfinfo *p, char *str)
 		return (pf_addspaces(p, p->width - len));
 }
 
-void			pf_convert_unsigned(t_pfinfo *p)
+void			pf_convert_unsigned(t_pfinfo *p, long long number)
 {
-	const	int		number = va_arg(p->va, unsigned int);
-	const	char	*str = ft_utoa_base(number, DEC_BASE);
-	int				len;
+	const	char		*str = ft_ulltoa_base(number, DEC_BASE);
+	int					len;
 
 	if (!p->flags)
 		return (pf_stradd(p, (char *)str));

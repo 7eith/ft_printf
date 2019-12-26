@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 19:22:57 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 22:27:11 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,9 +45,9 @@ static void		pf_convert_hexaminus(t_pfinfo *p, char *str)
 **	@params:		struct t_pfinfo *p
 */
 
-void			pf_convert_hexa(t_pfinfo *p, char *base, int number)
+void			pf_convert_hexa(t_pfinfo *p, char *base, long long number)
 {
-	const	char	*str = ft_utoa_base(number, base);
+	const	char	*str = ft_ulltoa_base(number, base);
 	int				len;
 
 	if (!p->flags)
@@ -83,22 +83,21 @@ void			pf_convert_hexa(t_pfinfo *p, char *base, int number)
 static void		pf_convert_dminus(t_pfinfo *p, long number)
 {
 	const int	neg = number < 0 ? 1 : 0;
-	int			len_to_print;
+	int			len;
 
 	if (neg)
 		pf_charadd(p, '-');
 	if (p->flags & PF_PRECIS && p->precision
 	&& p->precision > ft_numlen(number))
 		pf_addzeros(p, ft_numlen(number) - p->precision);
-	pf_stradd(p, ft_ltoa(neg ? number * -1 : number));
-	len_to_print = ft_numlen(number) + neg;
-	if (p->precision > ft_numlen(number))
-		len_to_print = p->precision + neg;
+	pf_stradd(p, ft_ulltoa_base(neg ? number * -1 : number, DEC_BASE));
+	len = p->precision > (int)ft_numlen(number)
+	? p->precision + neg : ft_numlen(number) + neg;
 	if (p->flags & PF_WIDTH && p->width > ft_numlen(number) &&
 	!(p->flags & PF_PRECIS || p->precision))
 		return (pf_addspaces(p, p->width - (ft_numlen(number) + neg)));
-	if (p->flags & PF_WIDTH && p->width >= len_to_print)
-		return (pf_addspaces(p, p->width - len_to_print));
+	if (p->flags & PF_WIDTH && p->width >= len)
+		return (pf_addspaces(p, p->width - len));
 }
 
 /*
@@ -107,31 +106,29 @@ static void		pf_convert_dminus(t_pfinfo *p, long number)
 **	@params:		struct t_pfinfo *p, long number
 */
 
-void			pf_convert_decimal(t_pfinfo *p)
+void			pf_convert_decimal(t_pfinfo *p, long long int n)
 {
-	const	long	number = (long)va_arg(p->va, int);
 	int				neg;
-	int				len_to_print;
+	int				len;
 
-	neg = number < 0 ? 1 : 0;
-	if (!p->flags)
-		return (pf_stradd(p, ft_ltoa(number)));
-	if (p->flags & PF_PRECIS && !p->precision && !number)
+	neg = n < 0 ? 1 : 0;
+	if (!p->flags && !neg)
+		return (pf_stradd(p, neg ? ft_ltoa(n) : ft_ulltoa_base(n, DEC_BASE)));
+	if (p->flags & PF_PRECIS && !p->precision && !n)
 		return (pf_addspaces(p, p->width));
 	if (p->flags & PF_MINUS)
-		return (pf_convert_dminus(p, number));
-	len_to_print = ft_numlen(number) + neg;
-	if (p->precision > ft_numlen(number))
-		len_to_print = p->precision + neg;
-	if (p->flags & PF_WIDTH && p->width >= len_to_print &&
+		return (pf_convert_dminus(p, n));
+	len = p->precision > (int)ft_numlen(n)
+	? p->precision + neg : ft_numlen(n) + neg;
+	if (p->flags & PF_WIDTH && p->width >= len &&
 	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
-		pf_addspaces(p, p->width - len_to_print);
+		pf_addspaces(p, p->width - len);
 	if (neg)
 		pf_charadd(p, '-');
-	if (p->flags & PF_WIDTH && p->width >= len_to_print
+	if (p->flags & PF_WIDTH && p->width >= len
 	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
-		pf_addzeros(p, p->width - len_to_print);
-	if (p->flags & PF_PRECIS && p->precision > ft_numlen(number))
-		pf_addzeros(p, ft_numlen(number) - p->precision);
-	pf_stradd(p, ft_ltoa(neg ? number * -1 : number));
+		pf_addzeros(p, p->width - len);
+	if (p->flags & PF_PRECIS && p->precision > ft_numlen(n))
+		pf_addzeros(p, ft_numlen(n) - p->precision);
+	pf_stradd(p, ft_ulltoa_base(neg ? n * -1 : n, DEC_BASE));
 }

@@ -6,17 +6,17 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/06 03:04:51 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 13:34:51 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 19:18:02 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 int			ft_numlen(int n)
 {
-	int		count;
-	long	number;
+	long long int	count;
+	long long int	number;
 
-	number = (long)n;
+	number = (long long int)n;
 	count = 1;
 	if (number < 0)
 		number *= -1;

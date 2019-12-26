@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 18:59:48 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 23:39:34 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -915,9 +915,6 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-	#include <locale.h>
-
-	setlocale(LC_ALL, "en_US");
 	printf("[%'d]", 10000);
 	printf("\n");
 	ft_printf("[%'d]", 10000);
@@ -980,4 +977,73 @@ int		main(void)
 	dprintf(1, "\n");
 	dprintf(1,"[%#10X]", 0);
 
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#llX]", ULLONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%#llX]", ULLONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#lx]", ULONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%#lx]", ULONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%li]", LONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%li]", LONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%lli]", LLONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%lli]", LLONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%lli]", LLONG_MAX + 1);
+	dprintf(1, "\n");
+	dprintf(1,"[%lli]", LLONG_MAX + 1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%lli]", LLONG_MIN);
+	dprintf(1, "\n");
+	dprintf(1,"[%lli]", LLONG_MIN);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%hi]", (short)USHRT_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%hi]", (short)USHRT_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%hhi]", CHAR_MAX + 1);
+	dprintf(1, "\n");
+	dprintf(1,"[%hhi]", CHAR_MAX + 1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%hx]", (short)USHRT_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%hx]", (short)USHRT_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%hhx]", CHAR_MAX + 1);
+	dprintf(1, "\n");
+	dprintf(1,"[%hhx]", CHAR_MAX + 1);
 }

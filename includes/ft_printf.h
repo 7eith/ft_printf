@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 19:23:25 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 21:27:38 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -91,11 +91,12 @@ void					convert(t_pfinfo *p);
 
 void					pf_convert_char(t_pfinfo *p, int is_pourcent);
 void					pf_convert_string(t_pfinfo *p);
-void					pf_convert_decimal(t_pfinfo *p);
+void					pf_convert_decimal(t_pfinfo *p, long long int number);
 void					pf_convert_pointer(t_pfinfo *p);
 
-void					pf_convert_unsigned(t_pfinfo *p);
-void					pf_convert_hexa(t_pfinfo *p, char *base, int number);
+void					pf_convert_unsigned(t_pfinfo *p, long long number);
+void					pf_convert_hexa(t_pfinfo *p, char *base,
+long long number);
 
 /*
 **	srcs/pf_content.c
@@ -116,5 +117,6 @@ void					pf_addzeros(t_pfinfo *p, int width);
 */
 
 void					pf_bind_ptr(t_pfinfo *p);
+void					pf_convert_bonus(t_pfinfo *p);
 
 #endif

@@ -6,26 +6,12 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 18:34:33 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 22:08:37 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-static	int			pf_is_flag(char c)
-{
-	size_t		count;
-
-	count = 0;
-	while (PF_FLAGS[count])
-	{
-		if (PF_FLAGS[count] == c)
-			return (1);
-		count++;
-	}
-	return (0);
-}
 
 /*
 **	parse_flags(struct printf_infos)
@@ -35,7 +21,7 @@ static	int			pf_is_flag(char c)
 
 void				parse_flags(t_pfinfo *p)
 {
-	while (p->format[p->count] && pf_is_flag(p->format[p->count]))
+	while (p->format[p->count] && ft_strchr(PF_FLAGS, p->format[p->count]))
 	{
 		if (p->format[p->count] == '-')
 			p->flags |= PF_MINUS;
@@ -85,20 +71,26 @@ void				parse_size(t_pfinfo *p)
 	}
 }
 
+/*
+**	pf_parse_modificator(struct printf_infos)
+**	@description:		parse bonus
+**	@param:				struct t_pfinfo
+*/
+
 void				pf_parse_modificator(t_pfinfo *p)
 {
 	while (p->format[p->count] && ft_strchr(PF_MF, p->format[p->count]))
 	{
 		if (p->format[p->count] == 'l')
 		{
-			if (p->format[++p->count] == 'l')
+			if (p->format[p->count + 1] == 'l')
 				p->flags |= PF_LL;
 			else
 				p->flags |= PF_L;
 		}
 		if (p->format[p->count] == 'h')
 		{
-			if (p->format[++p->count] == 'h')
+			if (p->format[p->count + 1] == 'h')
 				p->flags |= PF_HH;
 			else
 				p->flags |= PF_H;

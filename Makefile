@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/25 17:51:10 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/26 22:12:45 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -111,7 +111,7 @@ fclean		:		clean
 re			:		fclean all
 
 run			:		all
-		@gcc -Wall -Werror -Wextra -g libftprintf.a main.c -o printf
+		@gcc -Wall -Werror -Wextra -g -Wformat=0 libftprintf.a main.c -o printf
 		@clear
 		@./printf
 

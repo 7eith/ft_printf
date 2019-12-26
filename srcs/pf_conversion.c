@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/26 21:37:58 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 23:51:39 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@ void			convert(t_pfinfo *p)
 	p->type == 'p' ? pf_convert_pointer(p) : NULL;
 	p->type == 's' ? pf_convert_string(p) : NULL;
 	p->type == 'n' ? pf_bind_ptr(p) : NULL;
+	p->type == 'd' || p->type == 'i' ? pf_convert_dbonus(p) : NULL;
 	pf_convert_bonus(p);
 	p->flags = 0;
 }

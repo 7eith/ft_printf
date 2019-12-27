@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/26 22:27:11 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/27 01:27:37 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@
 **	@params:		struct t_pfinfo *p, string str
 */
 
-static void		pf_convert_hexaminus(t_pfinfo *p, char *str)
+static void			pf_convert_hexaminus(t_pfinfo *p, char *str)
 {
 	int				len;
 
@@ -45,7 +45,7 @@ static void		pf_convert_hexaminus(t_pfinfo *p, char *str)
 **	@params:		struct t_pfinfo *p
 */
 
-void			pf_convert_hexa(t_pfinfo *p, char *base, long long number)
+void				pf_convert_hexa(t_pfinfo *p, char *base, long long number)
 {
 	const	char	*str = ft_ulltoa_base(number, base);
 	int				len;
@@ -80,7 +80,7 @@ void			pf_convert_hexa(t_pfinfo *p, char *base, long long number)
 **	@params:		struct t_pfinfo *p, long number
 */
 
-static void		pf_convert_dminus(t_pfinfo *p, long number)
+static void			pf_convert_dminus(t_pfinfo *p, long number)
 {
 	const int	neg = number < 0 ? 1 : 0;
 	int			len;
@@ -100,35 +100,46 @@ static void		pf_convert_dminus(t_pfinfo *p, long number)
 		return (pf_addspaces(p, p->width - len));
 }
 
+static inline void	pf_normebonus(t_pfinfo *p, long long int n, int len)
+{
+	if (p->flags & PF_WIDTH && p->width >= len
+	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
+		pf_addzeros(p, p->width - len);
+	if (p->flags & PF_PRECIS && p->precision > ft_numlen(n))
+		pf_addzeros(p, ft_numlen(n) - p->precision);
+	pf_stradd(p, ft_ulltoa_base(n < 0 ? n * -1 : n, DEC_BASE));
+}
+
 /*
 **	pf_convert_decimal 	:: static void (struct printf_info)
 **	@description:	converter functions for decimal & integer.
 **	@params:		struct t_pfinfo *p, long number
 */
 
-void			pf_convert_decimal(t_pfinfo *p, long long int n)
+void				pf_convert_decimal(t_pfinfo *p, long long int n)
 {
-	int				neg;
+	int				padding;
 	int				len;
 
-	neg = n < 0 ? 1 : 0;
-	if (!p->flags && !neg)
-		return (pf_stradd(p, neg ? ft_ltoa(n) : ft_ulltoa_base(n, DEC_BASE)));
-	if (p->flags & PF_PRECIS && !p->precision && !n)
+	padding = n < 0 || p->flags & PF_SPACE || p->flags & PF_PLUS ? 1 : 0;
+	if (!p->flags && !(n < 0))
+		return (pf_stradd(p, n < 0 ? ft_ltoa(n) : ft_ulltoa_base(n, DEC_BASE)));
+	if (p->flags & PF_PRECIS && !p->precision && !n &&
+	!(p->flags & PF_SPACE || p->flags & PF_PLUS))
 		return (pf_addspaces(p, p->width));
+	if (p->flags & PF_PRECIS && !p->precision && !n &&
+	(p->flags & PF_SPACE || p->flags & PF_PLUS))
+		return (p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+'));
 	if (p->flags & PF_MINUS)
 		return (pf_convert_dminus(p, n));
 	len = p->precision > (int)ft_numlen(n)
-	? p->precision + neg : ft_numlen(n) + neg;
+	? p->precision + padding : ft_numlen(n) + padding;
 	if (p->flags & PF_WIDTH && p->width >= len &&
 	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
 		pf_addspaces(p, p->width - len);
-	if (neg)
+	if (n < 0)
 		pf_charadd(p, '-');
-	if (p->flags & PF_WIDTH && p->width >= len
-	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
-		pf_addzeros(p, p->width - len);
-	if (p->flags & PF_PRECIS && p->precision > ft_numlen(n))
-		pf_addzeros(p, ft_numlen(n) - p->precision);
-	pf_stradd(p, ft_ulltoa_base(neg ? n * -1 : n, DEC_BASE));
+	if ((p->flags & PF_SPACE || p->flags & PF_PLUS) && !(n < 0))
+		p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+');
+	pf_normebonus(p, n, len);
 }

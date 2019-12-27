@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/27 04:50:44 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 00:37:01 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,11 +85,14 @@ static void			pf_convert_dminus(t_pfinfo *p, long long number)
 	int			neg;
 	int			len;
 
- 	neg = number < 0 || p->flags & PF_SPACE || p->flags & PF_PLUS ? 1 : 0;
+	neg = number < 0 || p->flags & PF_SPACE || p->flags & PF_PLUS ? 1 : 0;
 	if (number < 0)
 		pf_charadd(p, '-');
 	if ((p->flags & PF_SPACE || p->flags & PF_PLUS) && !(number < 0))
 		p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+');
+	if (p->flags & PF_PRECIS && !p->precision && !number
+	&& (p->flags & PF_SPACE || p->flags & PF_PLUS) && p->width - neg > 0)
+		return (pf_addspaces(p, p->width - neg));
 	if (p->flags & PF_PRECIS && p->precision
 	&& p->precision > ft_numlen(number))
 		pf_addzeros(p, ft_numlen(number) - p->precision);
@@ -105,6 +108,13 @@ static void			pf_convert_dminus(t_pfinfo *p, long long number)
 
 static inline void	pf_normebonus(t_pfinfo *p, long long int n, int len)
 {
+	if (p->flags & PF_PRECIS && !p->precision && !n &&
+	(p->flags & PF_SPACE || p->flags & PF_PLUS))
+		return (p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+'));
+	if (n < 0)
+		pf_charadd(p, '-');
+	if ((p->flags & PF_SPACE || p->flags & PF_PLUS) && !(n < 0))
+		p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+');
 	if (p->flags & PF_WIDTH && p->width >= len
 	&& p->flags & PF_ZERO && !(p->flags & PF_PRECIS))
 		pf_addzeros(p, p->width - len);
@@ -127,15 +137,16 @@ void				pf_convert_decimal(t_pfinfo *p, long long int n)
 	padding = n < 0 || p->flags & PF_SPACE || p->flags & PF_PLUS ? 1 : 0;
 	if (!p->flags && !(n < 0))
 		return (pf_stradd(p, n < 0 ? ft_ltoa(n) : ft_ulltoa_base(n, DEC_BASE)));
-	if (p->flags & PF_PRECIS && !p->precision && !n && !(p->flags & PF_SPACE || p->flags & PF_PLUS))
+	if (p->flags & PF_PRECIS && !p->precision
+	&& !n && !(p->flags & PF_SPACE || p->flags & PF_PLUS))
 		return (pf_addspaces(p, p->width - padding));
-	if (p->flags & PF_PRECIS && !p->precision && !n && (p->flags & PF_SPACE || p->flags & PF_PLUS))
+	if (p->flags & PF_PRECIS && !p->precision && !n
+	&& !(p->flags & PF_MINUS) && (p->flags & PF_SPACE || p->flags & PF_PLUS))
 	{
 		if (p->width - padding > 0)
 			pf_addspaces(p, p->width - padding);
 		return (p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+'));
 	}
-	// printf("padding=%lld\n", n);
 	if (p->flags & PF_MINUS)
 		return (pf_convert_dminus(p, n));
 	len = p->precision > (int)ft_numlen(n)
@@ -143,12 +154,5 @@ void				pf_convert_decimal(t_pfinfo *p, long long int n)
 	if (p->flags & PF_WIDTH && p->width > len &&
 	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
 		pf_addspaces(p, p->width - len);
-	if (p->flags & PF_PRECIS && !p->precision && !n &&
-	(p->flags & PF_SPACE || p->flags & PF_PLUS))
-		return (p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+'));
-	if (n < 0)
-		pf_charadd(p, '-');
-	if ((p->flags & PF_SPACE || p->flags & PF_PLUS) && !(n < 0))
-		p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+');
 	pf_normebonus(p, n, len);
 }

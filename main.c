@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 18:38:41 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 00:25:50 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -915,9 +915,6 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-	#include <locale.h>
-
-	setlocale(LC_ALL, "en_US");
 	printf("[%'d]", 10000);
 	printf("\n");
 	ft_printf("[%'d]", 10000);
@@ -969,8 +966,205 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-	ft_printf("p[%#-10x]", 42);
+	ft_printf("[%#-10X]", 42);
 	dprintf(1, "\n");
-	dprintf(1,"p[%#-10x]", 42);
+	dprintf(1,"[%#-10X]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#10X]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%#10X]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#llX]", ULLONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%#llX]", ULLONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#lx]", ULONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%#lx]", ULONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%li]", LONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%li]", LONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%lli]", LLONG_MAX);
+	dprintf(1, "\n");
+	dprintf(1,"[%lli]", LLONG_MAX);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%lli]", LLONG_MAX + 1);
+	dprintf(1, "\n");
+	dprintf(1,"[%lli]", LLONG_MAX + 1);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%lli]", LLONG_MIN);
+	dprintf(1, "\n");
+	dprintf(1,"[%lli]", LLONG_MIN);
+
+	printf("\n");
+	printf("\n");
+
+	// ft_printf("[%hi]", (short)USHRT_MAX);
+	// dprintf(1, "\n");
+	// dprintf(1,"[%hi]", (short)USHRT_MAX);
+
+	// printf("\n");
+	// printf("\n");
+
+	// ft_printf("[%hhi]", CHAR_MAX + 1);
+	// dprintf(1, "\n");
+	// dprintf(1,"[%hhi]", CHAR_MAX + 1);
+
+	// printf("\n");
+	// printf("\n");
+
+	// ft_printf("[%hx]", (short)USHRT_MAX);
+	// dprintf(1, "\n");
+	// dprintf(1,"[%hx]", (short)USHRT_MAX);
+
+	// printf("\n");
+	// printf("\n");
+
+	// ft_printf("[%hhi]", CHAR_MAX + 1);
+	// dprintf(1, "\n");
+	// dprintf(1,"[%hhi]", CHAR_MAX + 1);
+
+	// printf("\n");
+	// printf("\n");
+
+	ft_printf("[% i]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"[% i]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("0 10i[%0 10i]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"0 10i[%0 10i]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("0 10i[%0+10i]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"0 10i[%0+10i]", 42);
+
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%0 .1i]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%0 .1i]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%0 .0i]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%0 .0i]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%0 .0i]", 4500);
+	dprintf(1, "\n");
+	dprintf(1,"[%0 .0i]", 4500);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%0 10i]", -42);
+	dprintf(1, "\n");
+	dprintf(1,"[%0 10i]", -42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%+5.i]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%+5.i]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%05%]");
+	dprintf(1, "\n");
+	dprintf(1,"[%05%]");
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#-3x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%#-3x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#3x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%#3x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%#-8.5x]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%#-8.5x]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[% 3i]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"[% 3i]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[% 5i]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"[% 5i]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[% .0i]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[% .0i]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[%+-5.d]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[%+-5.d]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[% -8.3d]", 8375);
+	dprintf(1, "\n");
+	dprintf(1,"[% -8.3d]", 8375);
 
 }

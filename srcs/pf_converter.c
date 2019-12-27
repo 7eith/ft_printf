@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 11:54:45 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/27 02:10:01 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,11 +31,10 @@ static void		pf_convert_uminus(t_pfinfo *p, char *str)
 		return (pf_addspaces(p, p->width - len));
 }
 
-void			pf_convert_unsigned(t_pfinfo *p)
+void			pf_convert_unsigned(t_pfinfo *p, long long number)
 {
-	const	int		number = va_arg(p->va, unsigned int);
-	const	char	*str = ft_utoa_base(number, DEC_BASE);
-	int				len;
+	const	char		*str = ft_ulltoa_base(number, DEC_BASE);
+	int					len;
 
 	if (!p->flags)
 		return (pf_stradd(p, (char *)str));
@@ -90,7 +89,9 @@ void			pf_convert_char(t_pfinfo *p, int is_pourcent)
 			pf_addspaces(p, p->width - 1);
 		return ;
 	}
-	if (p->flags & PF_WIDTH && p->width > 1)
+	if (p->width > 1 && p->flags & PF_ZERO)
+		pf_addzeros(p, p->width - 1);
+	else if (p->flags & PF_WIDTH && p->width > 1)
 		pf_addspaces(p, p->width - 1);
 	pf_charadd(p, c);
 }

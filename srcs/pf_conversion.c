@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   conversion.c                                     .::    .:/ .      .::   */
+/*   pf_conversion.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:54:36 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/25 11:44:03 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/26 23:51:39 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,21 +15,12 @@
 
 void			convert(t_pfinfo *p)
 {
-	if (p->type == '%')
-		pf_convert_char(p, 1);
-	if (p->type == 'c')
-		pf_convert_char(p, 0);
-	if (p->type == 's')
-		pf_convert_string(p);
-	if (p->type == 'd' || p->type == 'i')
-		pf_convert_decimal(p);
-	if (p->type == 'p')
-		pf_convert_pointer(p);
-	if (p->type == 'x' || p->type == 'X')
-		pf_convert_hexa(p, p->type == 'x' ? LOW_HEXA : UP_HEXA);
-	if (p->type == 'u')
-		pf_convert_unsigned(p);
-	if (p->type == 'n')
-		pf_bind_ptr(p);
+	p->type == '%' ? pf_convert_char(p, 1) : NULL;
+	p->type == 'c' ? pf_convert_char(p, 0) : NULL;
+	p->type == 'p' ? pf_convert_pointer(p) : NULL;
+	p->type == 's' ? pf_convert_string(p) : NULL;
+	p->type == 'n' ? pf_bind_ptr(p) : NULL;
+	p->type == 'd' || p->type == 'i' ? pf_convert_dbonus(p) : NULL;
+	pf_convert_bonus(p);
 	p->flags = 0;
 }

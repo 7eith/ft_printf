@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/27 03:04:37 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/27 04:50:44 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,17 +80,20 @@ void				pf_convert_hexa(t_pfinfo *p, char *base, long long number)
 **	@params:		struct t_pfinfo *p, long number
 */
 
-static void			pf_convert_dminus(t_pfinfo *p, long number)
+static void			pf_convert_dminus(t_pfinfo *p, long long number)
 {
-	const int	neg = number < 0 ? 1 : 0;
+	int			neg;
 	int			len;
 
-	if (neg)
+ 	neg = number < 0 || p->flags & PF_SPACE || p->flags & PF_PLUS ? 1 : 0;
+	if (number < 0)
 		pf_charadd(p, '-');
+	if ((p->flags & PF_SPACE || p->flags & PF_PLUS) && !(number < 0))
+		p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+');
 	if (p->flags & PF_PRECIS && p->precision
 	&& p->precision > ft_numlen(number))
 		pf_addzeros(p, ft_numlen(number) - p->precision);
-	pf_stradd(p, ft_ulltoa_base(neg ? number * -1 : number, DEC_BASE));
+	pf_stradd(p, ft_ulltoa_base(number < 0 ? number * -1 : number, DEC_BASE));
 	len = p->precision > (int)ft_numlen(number)
 	? p->precision + neg : ft_numlen(number) + neg;
 	if (p->flags & PF_WIDTH && p->width > ft_numlen(number) &&
@@ -124,19 +127,25 @@ void				pf_convert_decimal(t_pfinfo *p, long long int n)
 	padding = n < 0 || p->flags & PF_SPACE || p->flags & PF_PLUS ? 1 : 0;
 	if (!p->flags && !(n < 0))
 		return (pf_stradd(p, n < 0 ? ft_ltoa(n) : ft_ulltoa_base(n, DEC_BASE)));
-	if (p->flags & PF_PRECIS && !p->precision && !n &&
-	!(p->flags & PF_SPACE || p->flags & PF_PLUS))
-		return (pf_addspaces(p, p->width));
-	if (p->flags & PF_PRECIS && !p->precision && !n &&
-	(p->flags & PF_SPACE || p->flags & PF_PLUS))
+	if (p->flags & PF_PRECIS && !p->precision && !n && !(p->flags & PF_SPACE || p->flags & PF_PLUS))
+		return (pf_addspaces(p, p->width - padding));
+	if (p->flags & PF_PRECIS && !p->precision && !n && (p->flags & PF_SPACE || p->flags & PF_PLUS))
+	{
+		if (p->width - padding > 0)
+			pf_addspaces(p, p->width - padding);
 		return (p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+'));
+	}
+	// printf("padding=%lld\n", n);
 	if (p->flags & PF_MINUS)
 		return (pf_convert_dminus(p, n));
 	len = p->precision > (int)ft_numlen(n)
 	? p->precision + padding : ft_numlen(n) + padding;
-	if (p->flags & PF_WIDTH && p->width >= len &&
+	if (p->flags & PF_WIDTH && p->width > len &&
 	(!(p->flags & PF_ZERO) || p->flags & PF_PRECIS))
 		pf_addspaces(p, p->width - len);
+	if (p->flags & PF_PRECIS && !p->precision && !n &&
+	(p->flags & PF_SPACE || p->flags & PF_PLUS))
+		return (p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+'));
 	if (n < 0)
 		pf_charadd(p, '-');
 	if ((p->flags & PF_SPACE || p->flags & PF_PLUS) && !(n < 0))

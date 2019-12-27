@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/16 18:26:57 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/27 03:02:49 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/27 04:51:21 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -1057,9 +1057,17 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-	ft_printf("[%0 10i]", 42);
+	ft_printf("0 10i[%0 10i]", 42);
 	dprintf(1, "\n");
-	dprintf(1,"[%0 10i]", 42);
+	dprintf(1,"0 10i[%0 10i]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("0 10i[%0+10i]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"0 10i[%0+10i]", 42);
+
 
 	printf("\n");
 	printf("\n");
@@ -1103,20 +1111,6 @@ int		main(void)
 	dprintf(1, "\n");
 	dprintf(1,"[%05%]");
 
-	// printf("\n");
-	// printf("\n");
-
-	// ft_printf("[%05c]", 'e');
-	// dprintf(1, "\n");
-	// dprintf(1,"[%05c]", 'e');
-
-	// printf("\n");
-	// printf("\n");
-
-	// ft_printf("[%-05c]", 'e');
-	// dprintf(1, "\n");
-	// dprintf(1,"[%-05c]", 'e');
-
 	printf("\n");
 	printf("\n");
 
@@ -1141,8 +1135,28 @@ int		main(void)
 	printf("\n");
 	printf("\n");
 
-	ft_printf("[%#500x]", 0);
+	ft_printf("[% 3i]", 42);
 	dprintf(1, "\n");
-	dprintf(1,"[%#500x]", 0);
+	dprintf(1,"[% 3i]", 42);
 
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[% 5i]", 42);
+	dprintf(1, "\n");
+	dprintf(1,"[% 5i]", 42);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("[% .0i]", 0);
+	dprintf(1, "\n");
+	dprintf(1,"[% .0i]", 0);
+
+	printf("\n");
+	printf("\n");
+
+	ft_printf("%+-5.d", 0);
+	dprintf(1, "\n");
+	dprintf(1,"%+-5.d", 0);
 }

@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 00:04:32 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 00:52:24 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,6 @@
 # define DEC_BASE 		"0123456789"
 # define LOW_HEXA 		"0123456789abcdef"
 # define UP_HEXA 		"0123456789ABCDEF"
-# define OCTAL_BASE 	"01234567"
-# define BIN_BASE		"01"
 
 # define PF_MINUS		(1 << 0)
 # define PF_ZERO		(1 << 1)

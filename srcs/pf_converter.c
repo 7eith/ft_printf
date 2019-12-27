@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/26 17:22:15 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/27 02:10:01 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,7 +89,9 @@ void			pf_convert_char(t_pfinfo *p, int is_pourcent)
 			pf_addspaces(p, p->width - 1);
 		return ;
 	}
-	if (p->flags & PF_WIDTH && p->width > 1)
+	if (p->width > 1 && p->flags & PF_ZERO)
+		pf_addzeros(p, p->width - 1);
+	else if (p->flags & PF_WIDTH && p->width > 1)
 		pf_addspaces(p, p->width - 1);
 	pf_charadd(p, c);
 }

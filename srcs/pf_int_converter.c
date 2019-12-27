@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/27 01:27:37 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/27 03:04:37 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,18 +19,18 @@
 **	@params:		struct t_pfinfo *p, string str
 */
 
-static void			pf_convert_hexaminus(t_pfinfo *p, char *str)
+static void			pf_convert_hexaminus(t_pfinfo *p, char *str, long long n)
 {
 	int				len;
 
-	if (p->flags & PF_HASH)
+	if (p->flags & PF_HASH && n)
 		pf_stradd(p, p->type == 'X' ? ft_strdup("0X") : ft_strdup("0x"));
 	if (p->flags & PF_PRECIS && p->precision
 	&& p->precision > (int)ft_strlen(str))
 		pf_addzeros(p, (int)ft_strlen(str) - p->precision);
 	pf_stradd(p, str);
 	len = p->precision > (int)ft_strlen(str) ? p->precision : ft_strlen(str);
-	if (p->flags & PF_HASH)
+	if (p->flags & PF_HASH && n)
 		p->width -= 2;
 	if (p->flags & PF_WIDTH && p->width > (int)ft_strlen(str) &&
 	!(p->flags & PF_PRECIS || p->precision))
@@ -58,7 +58,7 @@ void				pf_convert_hexa(t_pfinfo *p, char *base, long long number)
 		return (pf_addspaces(p, p->width));
 	}
 	if (p->flags & PF_MINUS)
-		return (pf_convert_hexaminus(p, (char *)str));
+		return (pf_convert_hexaminus(p, (char *)str, number));
 	len = p->precision > (int)ft_strlen(str) ? p->precision : ft_strlen(str);
 	len += p->flags & PF_HASH && number ? 2 : 0;
 	if (p->flags & PF_WIDTH && p->width >= len &&

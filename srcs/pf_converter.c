@@ -6,12 +6,18 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/27 02:10:01 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 01:15:53 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+/*
+**	pf_convert_uminus 	:: static void (struct printf_info)
+**	@description:	converter functions for unsigned int with flag '-'
+**	@params:		struct t_pfinfo *p
+*/
 
 static void		pf_convert_uminus(t_pfinfo *p, char *str)
 {
@@ -30,6 +36,12 @@ static void		pf_convert_uminus(t_pfinfo *p, char *str)
 	if (p->flags & PF_WIDTH && p->width >= len)
 		return (pf_addspaces(p, p->width - len));
 }
+
+/*
+**	pf_convert_unsigned 	:: static void (struct printf_info, number)
+**	@description:	converter functions for unsigned integer.
+**	@params:		struct t_pfinfo *p
+*/
 
 void			pf_convert_unsigned(t_pfinfo *p, long long number)
 {
@@ -59,6 +71,12 @@ void			pf_convert_unsigned(t_pfinfo *p, long long number)
 	return (pf_stradd(p, (char *)str));
 }
 
+/*
+**	pf_convert_pointer 	:: static void (struct printf_info)
+**	@description:	converter functions for pointer and address
+**	@params:		struct t_pfinfo *p
+*/
+
 void			pf_convert_pointer(t_pfinfo *p)
 {
 	const	intptr_t	ptr = (intptr_t)va_arg(p->va, void *);
@@ -78,6 +96,12 @@ void			pf_convert_pointer(t_pfinfo *p)
 		pf_addspaces(p, p->width - ft_strlen(str));
 }
 
+/*
+**	pf_convert_char 	:: static void (struct printf_info, bool is_pourcent)
+**	@description:	converter functions for char and %
+**	@params:		struct t_pfinfo *p
+*/
+
 void			pf_convert_char(t_pfinfo *p, int is_pourcent)
 {
 	const char	c = is_pourcent ? '%' : va_arg(p->va, int);
@@ -95,6 +119,12 @@ void			pf_convert_char(t_pfinfo *p, int is_pourcent)
 		pf_addspaces(p, p->width - 1);
 	pf_charadd(p, c);
 }
+
+/*
+**	pf_convert_string 	:: static void (struct printf_info)
+**	@description:	converter functions for string.
+**	@params:		struct t_pfinfo *p
+*/
 
 void			pf_convert_string(t_pfinfo *p)
 {

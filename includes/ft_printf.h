@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 00:52:24 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 01:17:58 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 
 # define PF_TYPES 		"cspdiuxX%"
 # define PF_FLAGS		"-0+# "
-# define PF_MF			"lzh"
+# define PF_MF			"lh"
 
 # define DEC_BASE 		"0123456789"
 # define LOW_HEXA 		"0123456789abcdef"
@@ -75,13 +75,21 @@ typedef struct			s_pfcontent
 	struct s_pfcontent	*next;
 }						t_pfcontent;
 
+/*
+**	srcs/ft_printf.c
+*/
+
 int						ft_printf
 (const char *format, ...) __attribute__((format(printf,1,2)));
-int						ft_print(t_pfinfo *p);
+int						pf_print(int fd, t_pfinfo *p);
+int						ft_dprintf(int fd, const char *format, ...);
+void					pf_convert(t_pfinfo *p);
 
-void					parse(t_pfinfo *pf_infos);
+/*
+**	srcs/pf_parser.c
+*/
 
-void					convert(t_pfinfo *p);
+void					pf_parse(t_pfinfo *p);
 
 /*
 **	srcs/pf_converter.c

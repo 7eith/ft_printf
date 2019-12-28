@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/26 22:08:37 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 01:11:13 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,12 +14,12 @@
 #include "../includes/ft_printf.h"
 
 /*
-**	parse_flags(struct printf_infos)
+**	pf_parse_flags(struct printf_infos)
 **	@description:		parse flags and put in @param
 **	@param:				struct t_pfinfo
 */
 
-void				parse_flags(t_pfinfo *p)
+static	void			pf_parse_flags(t_pfinfo *p)
 {
 	while (p->format[p->count] && ft_strchr(PF_FLAGS, p->format[p->count]))
 	{
@@ -38,12 +38,12 @@ void				parse_flags(t_pfinfo *p)
 }
 
 /*
-**	parse_size(struct printf_infos)
+**	pf_parse_size(struct printf_infos)
 **	@description:		parse size and put in @param
 **	@param:				struct t_pfinfo
 */
 
-void				parse_size(t_pfinfo *p)
+static	void			pf_parse_size(t_pfinfo *p)
 {
 	if (p->format[p->count] == '*')
 	{
@@ -72,12 +72,12 @@ void				parse_size(t_pfinfo *p)
 }
 
 /*
-**	pf_parse_modificator(struct printf_infos)
-**	@description:		parse bonus
+**	pf_parse_type(struct printf_infos)
+**	@description:		parse type with bonus "l,ll,h,hh"
 **	@param:				struct t_pfinfo
 */
 
-void				pf_parse_modificator(t_pfinfo *p)
+static	void			pf_parse_type(t_pfinfo *p)
 {
 	while (p->format[p->count] && ft_strchr(PF_MF, p->format[p->count]))
 	{
@@ -95,21 +95,25 @@ void				pf_parse_modificator(t_pfinfo *p)
 			else
 				p->flags |= PF_H;
 		}
-		if (p->format[p->count] == 'z')
-			p->flags |= PF_Z;
 		p->count++;
 	}
 	p->type = p->format[p->count];
 	p->count++;
 }
 
-void				parse(t_pfinfo *p)
+/*
+**	pf_parse(struct printf_infos)
+**	@description:		parse format for ft_printf
+**	@param:				struct t_pfinfo
+*/
+
+void					pf_parse(t_pfinfo *p)
 {
 	if (p->format[p->count] == '%')
 		p->count++;
-	parse_flags(p);
-	parse_size(p);
-	pf_parse_modificator(p);
+	pf_parse_flags(p);
+	pf_parse_size(p);
+	pf_parse_type(p);
 	if (p->width < 0)
 	{
 		p->width *= -1;

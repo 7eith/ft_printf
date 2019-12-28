@@ -6,7 +6,7 @@
 #    By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/13 17:33:58 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/12/27 02:17:14 by amonteli    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/28 02:58:47 by amonteli    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -67,18 +67,19 @@ LIBFT_SRCS	=		ft_atoi.c				\
 					ft_ltoa.c				\
 					ft_ulltoa_base.c		\
 					ft_strbaselen.c			\
+					ft_utoa.c				\
+					ft_utoa_base.c			\
 					ft_strreplace.c			\
 
 SRCS 		=		ft_printf.c				\
 					pf_parser.c				\
 					pf_content_manager.c	\
-					pf_conversion.c			\
 					pf_converter.c 			\
 					pf_utils.c				\
 					pf_int_converter.c		\
 					bonus/pf_bonus.c		\
 
-FLAGS 		= 		-Wall -Wextra -Werror -g3
+FLAGS 		= 		-Wall -Wextra -Werror
 
 OBJS		= 		$(addprefix srcs/, $(SRCS:.c=.o)) $(addprefix libft/, $(LIBFT_SRCS:.c=.o))
 
@@ -109,11 +110,6 @@ fclean		:		clean
 		@echo "\033[90m[\033[91mft_printf\033[90m]\033[31m Deleted $(NAME)\033[0m"
 
 re			:		fclean all
-
-run			:		all
-		@gcc -Wall -Werror -Wextra -g libftprintf.a main.c -o printf
-		@clear
-		@./printf
 
 norme		:
 		@norminette srcs/*.c srcs/bonus/*.c includes/*.h libft/*.c libft/*.h

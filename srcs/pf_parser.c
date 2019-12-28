@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 01:11:13 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 20:47:39 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,15 +24,15 @@ static	void			pf_parse_flags(t_pfinfo *p)
 	while (p->format[p->count] && ft_strchr(PF_FLAGS, p->format[p->count]))
 	{
 		if (p->format[p->count] == '-')
-			p->flags |= PF_MINUS;
+			p->flags |= (1 << 0);
 		else if (p->format[p->count] == '+')
-			p->flags |= PF_PLUS;
+			p->flags |= (1 << 5);
 		else if (p->format[p->count] == '0')
-			p->flags |= PF_ZERO;
+			p->flags |= (1 << 1);
 		else if (p->format[p->count] == '#')
-			p->flags |= PF_HASH;
+			p->flags |= (1 << 7);
 		else if (p->format[p->count] == ' ')
-			p->flags |= PF_SPACE;
+			p->flags |= (1 << 6);
 		p->count++;
 	}
 }
@@ -47,17 +47,17 @@ static	void			pf_parse_size(t_pfinfo *p)
 {
 	if (p->format[p->count] == '*')
 	{
-		p->flags |= PF_WIDTH;
+		p->flags |= (1 << 4);
 		p->width = va_arg(p->va, int);
 		p->count++;
 	}
 	else if (ft_isdigit(p->format[p->count]))
 	{
-		p->flags |= PF_WIDTH;
+		p->flags |= (1 << 4);
 		p->width = ft_atoi(p->format + p->count);
 		p->count += ft_numlen(p->width);
 	}
-	if (p->format[p->count] == '.' && (p->flags |= PF_PRECIS))
+	if (p->format[p->count] == '.' && (p->flags |= (1 << 3)))
 	{
 		p->count++;
 		if (p->format[p->count] == '*' && (p->count++))
@@ -84,16 +84,16 @@ static	void			pf_parse_type(t_pfinfo *p)
 		if (p->format[p->count] == 'l')
 		{
 			if (p->format[p->count + 1] == 'l')
-				p->flags |= PF_LL;
+				p->flags |= (1 << 9);
 			else
-				p->flags |= PF_L;
+				p->flags |= (1 << 8);
 		}
 		if (p->format[p->count] == 'h')
 		{
 			if (p->format[p->count + 1] == 'h')
-				p->flags |= PF_HH;
+				p->flags |= (1 << 11);
 			else
-				p->flags |= PF_H;
+				p->flags |= (1 << 10);
 		}
 		p->count++;
 	}
@@ -117,8 +117,8 @@ void					pf_parse(t_pfinfo *p)
 	if (p->width < 0)
 	{
 		p->width *= -1;
-		p->flags |= PF_MINUS;
+		p->flags |= (1 << 0);
 	}
 	if (p->precision < 0)
-		p->flags &= ~PF_PRECIS;
+		p->flags &= ~(1 << 3);
 }

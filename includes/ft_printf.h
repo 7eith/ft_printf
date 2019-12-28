@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 01:17:58 by amonteli    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/28 20:39:41 by amonteli    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,24 +26,22 @@
 # define LOW_HEXA 		"0123456789abcdef"
 # define UP_HEXA 		"0123456789ABCDEF"
 
-# define PF_MINUS		(1 << 0)
-# define PF_ZERO		(1 << 1)
-# define PF_STAR		(1 << 2)
-# define PF_PRECIS		(1 << 3)
-# define PF_WIDTH		(1 << 4)
-
 /*
-** Bonus
+** # define PF_MINUS		(1 << 0)
+** # define PF_ZERO			(1 << 1)
+** # define PF_STAR			(1 << 2)
+** # define PF_PRECIS		(1 << 3)
+** # define PF_WIDTH		(1 << 4)
+**
+** # define PF_PLUS			(1 << 5)
+** # define PF_SPACE		(1 << 6)
+** # define PF_HASH			(1 << 7)
+** # define PF_L			(1 << 8)
+** # define PF_LL			(1 << 9)
+** # define PF_H			(1 << 10)
+** # define PF_HH			(1 << 11)
+** # define PF_Z			(1 << 12)
 */
-
-# define PF_PLUS		(1 << 5)
-# define PF_SPACE		(1 << 6)
-# define PF_HASH		(1 << 7)
-# define PF_L			(1 << 8)
-# define PF_LL			(1 << 9)
-# define PF_H			(1 << 10)
-# define PF_HH			(1 << 11)
-# define PF_Z			(1 << 12)
 
 /*
 **	flags:			encoded with bitwise check define at top

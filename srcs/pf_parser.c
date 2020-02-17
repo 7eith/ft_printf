@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   pf_parser.c                                      .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/17 17:17:50 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 20:47:39 by amonteli    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_parser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/17 17:17:50 by amonteli          #+#    #+#             */
+/*   Updated: 2020/02/17 09:33:46 by amonteli         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
@@ -24,11 +23,11 @@ static	void			pf_parse_flags(t_pfinfo *p)
 	while (p->format[p->count] && ft_strchr(PF_FLAGS, p->format[p->count]))
 	{
 		if (p->format[p->count] == '-')
-			p->flags |= (1 << 0);
+			p->flags |= PF_MINUS;
 		else if (p->format[p->count] == '+')
 			p->flags |= (1 << 5);
 		else if (p->format[p->count] == '0')
-			p->flags |= (1 << 1);
+			p->flags |= PF_ZERO;
 		else if (p->format[p->count] == '#')
 			p->flags |= (1 << 7);
 		else if (p->format[p->count] == ' ')

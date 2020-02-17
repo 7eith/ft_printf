@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   pf_converter.c                                   .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/07 04:57:06 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 20:40:25 by amonteli    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_converter.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/07 04:57:06 by amonteli          #+#    #+#             */
+/*   Updated: 2020/02/17 09:33:59 by amonteli         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
@@ -61,10 +60,10 @@ void			pf_convert_unsigned(t_pfinfo *p, long long number)
 	if (p->precision > (int)ft_strlen(str))
 		len = p->precision;
 	if (p->flags & (1 << 4) && p->width >= len &&
-	(!(p->flags & (1 << 1)) || p->flags & (1 << 3)))
+	(!(p->flags & PF_ZERO) || p->flags & (1 << 3)))
 		pf_addspaces(p, p->width - len);
 	if (p->flags & (1 << 4) && p->width >= len
-	&& p->flags & (1 << 1) && !(p->flags & (1 << 3)))
+	&& p->flags & PF_ZERO && !(p->flags & (1 << 3)))
 		pf_addzeros(p, p->width - len);
 	if (p->flags & (1 << 3) && p->precision > (int)ft_strlen(str))
 		pf_addzeros(p, ft_strlen(str) - p->precision);
@@ -113,7 +112,7 @@ void			pf_convert_char(t_pfinfo *p, int is_pourcent)
 			pf_addspaces(p, p->width - 1);
 		return ;
 	}
-	if (p->width > 1 && p->flags & (1 << 1))
+	if (p->width > 1 && p->flags & PF_ZERO)
 		pf_addzeros(p, p->width - 1);
 	else if (p->flags & (1 << 4) && p->width > 1)
 		pf_addspaces(p, p->width - 1);
@@ -139,7 +138,7 @@ void			pf_convert_string(t_pfinfo *p)
 	if (p->flags & (1 << 3))
 		str = ft_strncpy(ft_calloc(p->precision + 1, sizeof(char)), str,
 		p->precision);
-	if (p->flags & (1 << 0))
+	if (p->flags & PF_MINUS)
 	{
 		pf_stradd(p, str);
 		if (p->flags & (1 << 4) && p->width > (int)ft_strlen(str))

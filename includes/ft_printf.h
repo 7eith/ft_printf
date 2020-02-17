@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   ft_printf.h                                      .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/13 17:36:58 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 20:39:41 by amonteli    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/13 17:36:58 by amonteli          #+#    #+#             */
+/*   Updated: 2020/02/17 09:34:21 by amonteli         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
@@ -26,9 +25,15 @@
 # define LOW_HEXA 		"0123456789abcdef"
 # define UP_HEXA 		"0123456789ABCDEF"
 
+enum
+{
+	PF_MINUS = (1 << 0),
+	PF_ZERO = (1 << 1)
+};
+
 /*
 ** # define PF_MINUS		(1 << 0)
-** # define PF_ZERO			(1 << 1)
+** # define PF_ZERO			PF_ZERO
 ** # define PF_STAR			(1 << 2)
 ** # define PF_PRECIS		(1 << 3)
 ** # define PF_WIDTH		(1 << 4)

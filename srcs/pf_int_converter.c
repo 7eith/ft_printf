@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   pf_int_converter.c                               .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: amonteli <amonteli@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/22 06:38:49 by amonteli     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/28 20:40:56 by amonteli    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_int_converter.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/22 06:38:49 by amonteli          #+#    #+#             */
+/*   Updated: 2020/02/17 09:33:51 by amonteli         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
@@ -62,12 +61,12 @@ void				pf_convert_hexa(t_pfinfo *p, char *base, long long number)
 	len = p->precision > (int)ft_strlen(str) ? p->precision : ft_strlen(str);
 	len += p->flags & (1 << 7) && number ? 2 : 0;
 	if (p->flags & (1 << 4) && p->width >= len &&
-	(!(p->flags & (1 << 1)) || p->flags & (1 << 3)))
+	(!(p->flags & PF_ZERO) || p->flags & (1 << 3)))
 		pf_addspaces(p, p->width - len);
 	if (p->flags & (1 << 7) && number)
 		pf_stradd(p, p->type == 'X' ? ft_strdup("0X") : ft_strdup("0x"));
 	if (p->flags & (1 << 4) && p->width >= len
-	&& p->flags & (1 << 1) && !(p->flags & (1 << 3)))
+	&& p->flags & PF_ZERO && !(p->flags & (1 << 3)))
 		pf_addzeros(p, p->width - len);
 	if (p->flags & (1 << 3) && p->precision > (int)ft_strlen(str))
 		pf_addzeros(p, ft_strlen(str) - p->precision);
@@ -116,7 +115,7 @@ static inline void	pf_normebonus(t_pfinfo *p, long long int n, int len)
 	if ((p->flags & (1 << 6) || p->flags & (1 << 5)) && !(n < 0))
 		p->flags & (1 << 6) ? pf_charadd(p, ' ') : pf_charadd(p, '+');
 	if (p->flags & (1 << 4) && p->width >= len
-	&& p->flags & (1 << 1) && !(p->flags & (1 << 3)))
+	&& p->flags & PF_ZERO && !(p->flags & (1 << 3)))
 		pf_addzeros(p, p->width - len);
 	if (p->flags & (1 << 3) && p->precision > ft_numlen(n))
 		pf_addzeros(p, ft_numlen(n) - p->precision);
@@ -152,7 +151,7 @@ void				pf_convert_decimal(t_pfinfo *p, long long int n)
 	len = p->precision > (int)ft_numlen(n)
 	? p->precision + padding : ft_numlen(n) + padding;
 	if (p->flags & (1 << 4) && p->width > len &&
-	(!(p->flags & (1 << 1)) || p->flags & (1 << 3)))
+	(!(p->flags & PF_ZERO) || p->flags & (1 << 3)))
 		pf_addspaces(p, p->width - len);
 	pf_normebonus(p, n, len);
 }

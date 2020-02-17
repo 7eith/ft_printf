@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 17:36:58 by amonteli          #+#    #+#             */
-/*   Updated: 2020/02/17 09:34:21 by amonteli         ###   ########lyon.fr   */
+/*   Updated: 2020/02/17 09:43:31 by amonteli         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,19 @@
 enum
 {
 	PF_MINUS = (1 << 0),
-	PF_ZERO = (1 << 1)
+	PF_ZERO = (1 << 1),
+	PF_STAR = (1 << 2),
+	PF_PRECIS = (1 << 3),
+	PF_WIDTH = (1 << 4),
+	PF_PLUS = (1 << 5),
+	PF_SPACE = (1 << 6),
+	PF_HASH = (1 << 7),
+	PF_L = (1 << 8),
+	PF_LL = (1 << 9),
+	PF_H = (1 << 10),
+	PF_HH = (1 << 11),
+	PF_Z = (1 << 12)
 };
-
-/*
-** # define PF_MINUS		(1 << 0)
-** # define PF_ZERO			PF_ZERO
-** # define PF_STAR			(1 << 2)
-** # define PF_PRECIS		(1 << 3)
-** # define PF_WIDTH		(1 << 4)
-**
-** # define PF_PLUS			(1 << 5)
-** # define PF_SPACE		(1 << 6)
-** # define PF_HASH			(1 << 7)
-** # define PF_L			(1 << 8)
-** # define PF_LL			(1 << 9)
-** # define PF_H			(1 << 10)
-** # define PF_HH			(1 << 11)
-** # define PF_Z			(1 << 12)
-*/
 
 /*
 **	flags:			encoded with bitwise check define at top

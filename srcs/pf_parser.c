@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 17:17:50 by amonteli          #+#    #+#             */
-/*   Updated: 2020/02/17 09:33:46 by amonteli         ###   ########lyon.fr   */
+/*   Updated: 2020/02/17 09:42:51 by amonteli         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static	void			pf_parse_flags(t_pfinfo *p)
 		if (p->format[p->count] == '-')
 			p->flags |= PF_MINUS;
 		else if (p->format[p->count] == '+')
-			p->flags |= (1 << 5);
+			p->flags |= PF_PLUS;
 		else if (p->format[p->count] == '0')
 			p->flags |= PF_ZERO;
 		else if (p->format[p->count] == '#')
-			p->flags |= (1 << 7);
+			p->flags |= PF_HASH;
 		else if (p->format[p->count] == ' ')
-			p->flags |= (1 << 6);
+			p->flags |= PF_SPACE;
 		p->count++;
 	}
 }
@@ -46,17 +46,17 @@ static	void			pf_parse_size(t_pfinfo *p)
 {
 	if (p->format[p->count] == '*')
 	{
-		p->flags |= (1 << 4);
+		p->flags |= PF_WIDTH;
 		p->width = va_arg(p->va, int);
 		p->count++;
 	}
 	else if (ft_isdigit(p->format[p->count]))
 	{
-		p->flags |= (1 << 4);
+		p->flags |= PF_WIDTH;
 		p->width = ft_atoi(p->format + p->count);
 		p->count += ft_numlen(p->width);
 	}
-	if (p->format[p->count] == '.' && (p->flags |= (1 << 3)))
+	if (p->format[p->count] == '.' && (p->flags |= PF_PRECIS))
 	{
 		p->count++;
 		if (p->format[p->count] == '*' && (p->count++))
@@ -83,16 +83,16 @@ static	void			pf_parse_type(t_pfinfo *p)
 		if (p->format[p->count] == 'l')
 		{
 			if (p->format[p->count + 1] == 'l')
-				p->flags |= (1 << 9);
+				p->flags |= PF_LL;
 			else
-				p->flags |= (1 << 8);
+				p->flags |= PF_L;
 		}
 		if (p->format[p->count] == 'h')
 		{
 			if (p->format[p->count + 1] == 'h')
-				p->flags |= (1 << 11);
+				p->flags |= PF_HH;
 			else
-				p->flags |= (1 << 10);
+				p->flags |= PF_H;
 		}
 		p->count++;
 	}
@@ -119,5 +119,5 @@ void					pf_parse(t_pfinfo *p)
 		p->flags |= (1 << 0);
 	}
 	if (p->precision < 0)
-		p->flags &= ~(1 << 3);
+		p->flags &= ~PF_PRECIS;
 }

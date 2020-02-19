@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 04:57:06 by amonteli          #+#    #+#             */
-/*   Updated: 2020/02/17 09:41:39 by amonteli         ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 04:34:45 by amonteli         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void			pf_convert_unsigned(t_pfinfo *p, long long number)
 		free((char *)str);
 		return (pf_addspaces(p, p->width));
 	}
-	if (p->flags & (1 << 0))
+	if (p->flags & PF_MINUS)
 		return (pf_convert_uminus(p, (char *)str));
 	len = ft_strlen(str);
 	if (p->precision > (int)ft_strlen(str))
@@ -84,14 +84,11 @@ void			pf_convert_pointer(t_pfinfo *p)
 	if (p->flags & PF_PRECIS && !ptr)
 		str = ft_strdup("0x");
 	else
-		str = ft_strjoin(ft_strdup("0x"),
-		ft_ulltoa_base((unsigned long long)ptr, LOW_HEXA));
-	if (p->flags & PF_WIDTH && !(p->flags & (1 << 0))
-	&& p->width > (int)ft_strlen(str))
+		str = ft_strjoin(ft_strdup("0x"), ft_ulltoa_base((unsigned long long)ptr, LOW_HEXA));
+	if (p->flags & PF_WIDTH && !(p->flags & PF_MINUS) && p->width > (int)ft_strlen(str))
 		pf_addspaces(p, p->width - ft_strlen(str));
 	pf_stradd(p, str);
-	if (p->flags & PF_WIDTH && p->flags & (1 << 0)
-	&& p->width > (int)ft_strlen(str))
+	if (p->flags & PF_WIDTH && p->flags & PF_MINUS && p->width > (int)ft_strlen(str))
 		pf_addspaces(p, p->width - ft_strlen(str));
 }
 
@@ -105,7 +102,7 @@ void			pf_convert_char(t_pfinfo *p, int is_pourcent)
 {
 	const char	c = is_pourcent ? '%' : va_arg(p->va, int);
 
-	if (p->flags & (1 << 0))
+	if (p->flags & PF_MINUS)
 	{
 		pf_charadd(p, c);
 		if (p->width > 1)

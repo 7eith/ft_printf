@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 06:38:49 by amonteli          #+#    #+#             */
-/*   Updated: 2020/02/17 09:42:10 by amonteli         ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 04:34:47 by amonteli         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void				pf_convert_hexa(t_pfinfo *p, char *base, long long number)
 		free((char *)str);
 		return (pf_addspaces(p, p->width));
 	}
-	if (p->flags & (1 << 0))
+	if (p->flags & PF_MINUS)
 		return (pf_convert_hexaminus(p, (char *)str, number));
 	len = p->precision > (int)ft_strlen(str) ? p->precision : ft_strlen(str);
 	len += p->flags & PF_HASH && number ? 2 : 0;
@@ -140,13 +140,13 @@ void				pf_convert_decimal(t_pfinfo *p, long long int n)
 	&& !n && !(p->flags & PF_SPACE || p->flags & PF_PLUS))
 		return (pf_addspaces(p, p->width - padding));
 	if (p->flags & PF_PRECIS && !p->precision && !n
-	&& !(p->flags & (1 << 0)) && (p->flags & PF_SPACE || p->flags & PF_PLUS))
+	&& !(p->flags & PF_MINUS) && (p->flags & PF_SPACE || p->flags & PF_PLUS))
 	{
 		if (p->width - padding > 0)
 			pf_addspaces(p, p->width - padding);
 		return (p->flags & PF_SPACE ? pf_charadd(p, ' ') : pf_charadd(p, '+'));
 	}
-	if (p->flags & (1 << 0))
+	if (p->flags & PF_MINUS)
 		return (pf_convert_dminus(p, n));
 	len = p->precision > (int)ft_numlen(n)
 	? p->precision + padding : ft_numlen(n) + padding;

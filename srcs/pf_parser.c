@@ -6,7 +6,7 @@
 /*   By: amonteli <amonteli@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 17:17:50 by amonteli          #+#    #+#             */
-/*   Updated: 2020/02/17 09:42:51 by amonteli         ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 04:35:06 by amonteli         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void					pf_parse(t_pfinfo *p)
 	if (p->width < 0)
 	{
 		p->width *= -1;
-		p->flags |= (1 << 0);
+		p->flags |= PF_MINUS;
 	}
 	if (p->precision < 0)
 		p->flags &= ~PF_PRECIS;
